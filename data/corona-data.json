@@ -1,0 +1,2193 @@
+[
+    {
+        "displayText": "audio.dispose( audioHandle )",
+        "type": "function",
+        "description": "Releases audio memory associated with the handle.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/dispose.html",
+        "snippet": "audio.dispose( ${1:audioHandle} )"
+    },
+    {
+        "displayText": "audio.fade( [ { [channel=c] [, time=t] [, volume=v ] } ] )",
+        "type": "function",
+        "description": "This fades a playing sound in a specified amount to a specified volume. The audio will continue playing after the fade completes.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/fade.html",
+        "snippet": "audio.fade( ${1:[ { [channel=c] [, time=t] [, volume=v ] } ]} )"
+    },
+    {
+        "displayText": "audio.fadeOut( [ { [channel=c] [, time=t] } ] )",
+        "type": "function",
+        "description": "This stops a playing sound in a specified amount of time and fades to min volume while doing it. The audio will stop at the end of the time and the channel will be freed.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/fadeOut.html",
+        "snippet": "audio.fadeOut( ${1:[ { [channel=c] [, time=t] } ]} )"
+    },
+    {
+        "displayText": "audio.findFreeChannel( [ startChannel ] )",
+        "type": "function",
+        "description": "Looks for an available audio channel for playback. You can provide a start channel number as parameter and begin searching from that channel, increasing upward to the highest channel. The search does not include reserved channels.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/findFreeChannel.html",
+        "snippet": "audio.findFreeChannel( ${1:[ startChannel ]} )"
+    },
+    {
+        "displayText": "audio.getDuration( audioHandle )",
+        "type": "function",
+        "description": "This function returns the total time in milliseconds of the audio resource. If the total length cannot be determined, -1 will be returned.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/getDuration.html",
+        "snippet": "audio.getDuration( ${1:audioHandle} )"
+    },
+    {
+        "displayText": "audio.getMaxVolume( { channel=c } )",
+        "type": "function",
+        "description": "Gets the max volume for a specific channel. There is no max volume for the master volume.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/getMaxVolume.html",
+        "snippet": "audio.getMaxVolume( { ${1:channel}=${2:c} } )"
+    },
+    {
+        "displayText": "audio.getMinVolume( { channel=c } )",
+        "type": "function",
+        "description": "Gets the minimum volume for a specific channel. There is no minimum volume for the master volume.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/getMinVolume.html",
+        "snippet": "audio.getMinVolume( { ${1:channel}=${2:c} } )"
+    },
+    {
+        "displayText": "audio.getVolume( { channel=c } )",
+        "type": "function",
+        "description": "Gets the volume for a specific channel, or gets the master volume.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/getVolume.html",
+        "snippet": "audio.getVolume( { ${1:channel}=${2:c} } )"
+    },
+    {
+        "displayText": "audio.isChannelActive( channel )",
+        "type": "function",
+        "description": "Returns true if the specified channel is currently playing or paused; false if otherwise.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/isChannelActive.html",
+        "snippet": "audio.isChannelActive( ${1:channel} )"
+    },
+    {
+        "displayText": "audio.isChannelPaused( channel )",
+        "type": "function",
+        "description": "Returns true if the specified channel is currently paused; false if not.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/isChannelPaused.html",
+        "snippet": "audio.isChannelPaused( ${1:channel} )"
+    },
+    {
+        "displayText": "audio.isChannelPlaying( channel )",
+        "type": "function",
+        "description": "Returns true if the specified channel is currently playing; false if otherwise.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/isChannelPlaying.html",
+        "snippet": "audio.isChannelPlaying( ${1:channel} )"
+    },
+    {
+        "displayText": "audio.loadSound( audiofileName [, baseDir ]  )",
+        "type": "function",
+        "description": "Loads an entire file completely into memory and returns a reference to the audio data. Files that are loaded completely into memory may be reused\/played\/shared simultaneously on multiple channels so you only need to load one instance of the file. You should use this to load all your short sounds, especially ones you may play frequently. For best results, load all the sounds at the launch of your app or the start of a new level\/scene.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/loadSound.html",
+        "snippet": "audio.loadSound( ${1:audiofileName} ${2:[, baseDir ]}  )"
+    },
+    {
+        "displayText": "audio.loadStream( audioFileName [, baseDir ]  )",
+        "type": "function",
+        "description": "Loads (opens) a file to be read as a stream. Streamed files are read in little chunks at a time to minimize memory use. These are intended for large\/long files like background music and speech. Unlike files loaded with audio.loadSound(), these cannot be shared simultaneously across multiple channels. If you need to play multiple simulataneous instances of the same file, you must load multiple instances of the file.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/loadStream.html",
+        "snippet": "audio.loadStream( ${1:audioFileName} ${2:[, baseDir ]}  )"
+    },
+    {
+        "displayText": "audio.pause( [channel] )",
+        "type": "function",
+        "description": "Pauses playback on a channel (or all channels if no channels are specified). Has no effect on channels that aren't playing.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/pause.html",
+        "snippet": "audio.pause( ${1:[channel]} )"
+    },
+    {
+        "displayText": "audio.play( audioHandle [, options ] )",
+        "type": "function",
+        "description": "Plays the audio specified by the audio handle on a channel. If a channel is not explicitly specified, an available channel will be automatically chosen for you.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/play.html",
+        "snippet": "audio.play( ${1:audioHandle} ${2:[, options ]} )"
+    },
+    {
+        "displayText": "audio.reserveChannels( channels )",
+        "type": "function",
+        "description": "Allows you to reserve a certain number of channels so they won't be automatically assigned to play on. This function blocks off the lower number channels up to the number you specify so they won't be automatically assigned to be played on when you call various play functions.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/reserveChannels.html",
+        "snippet": "audio.reserveChannels( ${1:channels} )"
+    },
+    {
+        "displayText": "audio.resume( [channel] )",
+        "type": "function",
+        "description": "Resumes playback on a channel that is paused (or all channels if no channel is specified). Should have no effect on channels that aren't paused.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/resume.html",
+        "snippet": "audio.resume( ${1:[channel]} )"
+    },
+    {
+        "displayText": "audio.rewind( [audioHandle | options] )",
+        "type": "function",
+        "description": "Rewinds audio to the beginning position on either an active channel or directly on the audio handle (rewinds all channels if no arguments are specified).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/rewind.html",
+        "snippet": "audio.rewind( ${1:[audioHandle | options]} )"
+    },
+    {
+        "displayText": "audio.seek( time [, audioHandle ] [, options ] )",
+        "type": "function",
+        "description": "Seeks to a time position on either an active channel or directly on the audio handle.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/seek.html",
+        "snippet": "audio.seek( ${1:time} ${2:[, audioHandle ] [, options ]} )"
+    },
+    {
+        "displayText": "audio.setMaxVolume( volume, options )",
+        "type": "function",
+        "description": "Clamps the maximum volume to the set value. Any volumes that exceed the value will be played at the maximum volume level.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/setMaxVolume.html",
+        "snippet": "audio.setMaxVolume( ${1:volume}, ${2:options} )"
+    },
+    {
+        "displayText": "audio.setMinVolume( volume, options )",
+        "type": "function",
+        "description": "Clamps the minimum volume to the set value. Any volumes that fall below the value will be played at the minimum volume level.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/setMinVolume.html",
+        "snippet": "audio.setMinVolume( ${1:volume}, ${2:options} )"
+    },
+    {
+        "displayText": "audio.setVolume( volume [, options ] )",
+        "type": "function",
+        "description": "Sets the volume either for a specific channel or sets the master volume.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/setVolume.html",
+        "snippet": "audio.setVolume( ${1:volume} ${2:[, options ]} )"
+    },
+    {
+        "displayText": "audio.stop( [channel] )",
+        "type": "function",
+        "description": "Stops playback on a channel (or all channels) and clears the channel(s) so they can be played on again. Callbacks will still be invoked, but the completed flag will be set to false.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/stop.html",
+        "snippet": "audio.stop( ${1:[channel]} )"
+    },
+    {
+        "displayText": "audio.stopWithDelay( duration [, options ] )",
+        "type": "function",
+        "description": "Stops a currently playing sound after the specified time delay.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/stopWithDelay.html",
+        "snippet": "audio.stopWithDelay( ${1:duration} ${2:[, options ]} )"
+    },
+    {
+        "displayText": "composer.getScene( sceneName )",
+        "type": "function",
+        "description": "Returns the specified scene object, as returned from composer.newScene(). Returns nil if the scene object does not exist. This function is useful for getting a reference to a specific scene object \u2014 for instance, if the current scene needs access to a specific function that's attached to another scene.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/getScene.html",
+        "snippet": "composer.getScene( ${1:sceneName} )"
+    },
+    {
+        "displayText": "composer.getSceneName( sceneType )",
+        "type": "function",
+        "description": "Returns the current, previous, or overlay scene name as a string. This can then be used with composer.gotoScene() or composer.removeScene().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/getSceneName.html",
+        "snippet": "composer.getSceneName( ${1:sceneType} )"
+    },
+    {
+        "displayText": "composer.getVariable( variableName )",
+        "type": "function",
+        "description": "This function retrieves the value of a variable (from within the Composer object) that you previously set via composer.setVariable().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/getVariable.html",
+        "snippet": "composer.getVariable( ${1:variableName} )"
+    },
+    {
+        "displayText": "composer.gotoScene( sceneName [, options] )",
+        "type": "function",
+        "description": "This function is used to transition to a specific scene. When called, the hide event is dispatched to the current scene (if\u00a0one\u00a0exists). If a self.view group does not already exist for the specified target scene, the create event will be dispatched to that scene, then the show event will be dispatched.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/gotoScene.html",
+        "snippet": "composer.gotoScene( ${1:sceneName} ${2:[, options]} )"
+    },
+    {
+        "displayText": "composer.hideOverlay( [recycleOnly] [, effect] [, time] )",
+        "type": "function",
+        "description": "This function hides\/removes the current overlay scene (see composer.showOverlay()), if one is being displayed.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/hideOverlay.html",
+        "snippet": "composer.hideOverlay( ${1:[recycleOnly]} ${2:[, effect]} ${3:[, time]} )"
+    },
+    {
+        "displayText": "composer.loadScene( sceneName [, doNotLoadView] [, params] )",
+        "type": "function",
+        "description": "Loads the specified scene, hidden behind the current scene, without initiating a scene transition. This function is similar to composer.gotoScene(), but it does not change the currently active scene. Only the create event will be dispatched on the scene, assuming its self.view does not already exist.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/loadScene.html",
+        "snippet": "composer.loadScene( ${1:sceneName} ${2:[, doNotLoadView]} ${3:[, params]} )"
+    },
+    {
+        "displayText": "composer.newScene( ccscene )",
+        "type": "function",
+        "description": "This function creates new scene objects which can be used with the Composer Library, or references scenes created within the Composer GUI.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/newScene.html",
+        "snippet": "composer.newScene( ${1:ccscene} )"
+    },
+    {
+        "displayText": "composer.removeHidden( shouldRecycle )",
+        "type": "function",
+        "description": "This function removes (or optionally recycles) all scenes except for the currently active scene. A destroy event is first dispatched to all of these scenes.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/removeHidden.html",
+        "snippet": "composer.removeHidden( ${1:shouldRecycle} )"
+    },
+    {
+        "displayText": "composer.removeScene( sceneName, shouldRecycle )",
+        "type": "function",
+        "description": "This function removes the specified scene (or optionally recycles it). A destroy event is first dispatched to the scene.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/removeScene.html",
+        "snippet": "composer.removeScene( ${1:sceneName}, ${2:shouldRecycle} )"
+    },
+    {
+        "displayText": "composer.setVariable( variableName, value )",
+        "type": "function",
+        "description": "This function sets a variable (within the Composer module) which you can access from any other scene via composer.getVariable().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/setVariable.html",
+        "snippet": "composer.setVariable( ${1:variableName}, ${2:value} )"
+    },
+    {
+        "displayText": "composer.showOverlay( sceneName [, options] )",
+        "type": "function",
+        "description": "This function loads an overlay scene above the currently active scene (the parent scene), leaving the parent scene intact.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/showOverlay.html",
+        "snippet": "composer.showOverlay( ${1:sceneName} ${2:[, options]} )"
+    },
+    {
+        "displayText": "crypto.digest( algorithm, data [, raw] )",
+        "type": "function",
+        "description": "Generates the message digest (the hash) of the input string.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/crypto\/digest.html",
+        "snippet": "crypto.digest( ${1:algorithm}, ${2:data} ${3:[, raw]} )"
+    },
+    {
+        "displayText": "crypto.hmac( algorithm, data, key [, raw] )",
+        "type": "function",
+        "description": "Computes HMAC (Key-Hashing for Message Authentication Code) of the string and returns it.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/crypto\/hmac.html",
+        "snippet": "crypto.hmac( ${1:algorithm}, ${2:data}, ${3:key} ${4:[, raw]} )"
+    },
+    {
+        "displayText": "display.capture( displayObject, options )",
+        "type": "function",
+        "description": "This function is the same as display.save(), but it returns a display object instead of saving to a file by default. You can optionally save the capture to the device's photo library, but this is not the default action \u2014 you must explicitly tell it to do so when calling the function.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/capture.html",
+        "snippet": "display.capture( ${1:displayObject}, ${2:options} )"
+    },
+    {
+        "displayText": "display.captureBounds( screenBounds [, saveToAlbum ] )",
+        "type": "function",
+        "description": "Captures a portion of the screen and returns it as a new DisplayObject. You can specify what portion of the screen to capture by passing in rectangular bounds. You can optionally save the capture image as a file to the device's photo library.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/captureBounds.html",
+        "snippet": "display.captureBounds( ${1:screenBounds} ${2:[, saveToAlbum ]} )"
+    },
+    {
+        "displayText": "display.captureScreen( [saveToAlbum] )",
+        "type": "function",
+        "description": "Captures the contents of the screen and returns it as a new display object. You can optionally save the capture as a file to the device's photo library.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/captureScreen.html",
+        "snippet": "display.captureScreen( ${1:[saveToAlbum]} )"
+    },
+    {
+        "displayText": "display.colorSample( x, y, listener )",
+        "type": "function",
+        "description": "Get the color of a pixel on screen.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/colorSample.html",
+        "snippet": "display.colorSample( ${1:x}, ${2:y}, ${3:listener} )"
+    },
+    {
+        "displayText": "display.getCurrentStage()",
+        "type": "function",
+        "description": "Returns a reference to the current stage object, which is the parent group for all display objects and groups. Currently, Corona has a single stage instance, so this function always returns a reference to the same object.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/getCurrentStage.html",
+        "snippet": "display.getCurrentStage()"
+    },
+    {
+        "displayText": "display.getDefault( key )",
+        "type": "function",
+        "description": "Get default display values including default colors for display objects, anchor point defaults, texture wrapping settings, etc.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/getDefault.html",
+        "snippet": "display.getDefault( ${1:key} )"
+    },
+    {
+        "displayText": "display.loadRemoteImage( url, method, listener [, params], destFilename [, baseDir] [, x, y] )",
+        "type": "function",
+        "description": "This a convenience method, similar to network.download(), which returns a display\u00a0object containing the image, as well as saving the image to a file.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/loadRemoteImage.html",
+        "snippet": "display.loadRemoteImage( ${1:url}, ${2:method}, ${3:listener} ${4:[, params]}, ${5:destFilename} ${6:[, baseDir]} ${7:[, x, y]} )"
+    },
+    {
+        "displayText": "display.newCircle( xCenter, yCenter, radius )",
+        "type": "function",
+        "description": "Creates a circle with radius radius centered at specified coordinates (xCenter, yCenter). The local origin is at the center of the circle and the anchor point is initialized to this local origin.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newCircle.html",
+        "snippet": "display.newCircle( ${1:xCenter}, ${2:yCenter}, ${3:radius} )"
+    },
+    {
+        "displayText": "display.newCircle( parent, xCenter, yCenter, radius )",
+        "type": "function",
+        "description": "Creates a circle with radius radius centered at specified coordinates (xCenter, yCenter). The local origin is at the center of the circle and the anchor point is initialized to this local origin.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newCircle.html",
+        "snippet": "display.newCircle( ${1:parent}, ${2:xCenter}, ${3:yCenter}, ${4:radius} )"
+    },
+    {
+        "displayText": "display.newContainer( [parent, ] width, height )",
+        "type": "function",
+        "description": "Containers are a special kind of group in which the children are clipped (masked) by the bounds of the container.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newContainer.html",
+        "snippet": "display.newContainer( ${1:[parent, ]} ${2:width}, ${3:height} )"
+    },
+    {
+        "displayText": "display.newEmbossedText( { options } )",
+        "type": "function",
+        "description": "Creates an embossed text object. The local origin is at the center of the text and the anchor point is initialized to this local origin.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newEmbossedText.html",
+        "snippet": "display.newEmbossedText( { ${1:options} } )"
+    },
+    {
+        "displayText": "display.newEmitter( emitterParams )",
+        "type": "function",
+        "description": "This function is used to create an EmitterObject, used to display particle effects created with Particle Designer.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newEmitter.html",
+        "snippet": "display.newEmitter( ${1:emitterParams} )"
+    },
+    {
+        "displayText": "display.newGroup()",
+        "type": "function",
+        "description": "Creates a group in which you can add and remove child display objects. Initially, there are no children in a group. The local origin is at the parent's origin; the anchor point is initialized to this local origin.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newGroup.html",
+        "snippet": "display.newGroup()"
+    },
+    {
+        "displayText": "display.newImage( [parent,] filename [,baseDir] [,x,y] [,isFullResolution])",
+        "type": "function",
+        "description": "Displays an image on the screen from a file (supports tinting via object:setFillColor). The local origin is at the center of the image and the anchor point is initialized to this local origin.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newImage.html",
+        "snippet": "display.newImage( ${1:[parent,]} ${2:filename} ${3:[,baseDir] [,x,y] [,isFullResolution]})"
+    },
+    {
+        "displayText": "display.newImageRect( [parent,] filename, [baseDir,] width, height )",
+        "type": "function",
+        "description": "Displays an image on the screen from a file (supports tinting via object:setFillColor). The local origin is at the center of the image and the anchor point is initialized to this local origin.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newImageRect.html",
+        "snippet": "display.newImageRect( ${1:[parent,]} ${2:filename}, ${3:[baseDir,]} ${4:width}, ${5:height} )"
+    },
+    {
+        "displayText": "display.newLine( [parentGroup,] x1, y1, x2, y2 [, x3, y3, ... ] )",
+        "type": "function",
+        "description": "Draw a line from one point to another. Optionally, you may append points to the end of the line to create outline shapes or paths.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newLine.html",
+        "snippet": "display.newLine( ${1:[parentGroup,]} ${2:x1}, ${3:y1}, ${4:x2}, ${5:y2} ${6:[, x3, y3, ... ]} )"
+    },
+    {
+        "displayText": "display.newPolygon( x, y, vertices )",
+        "type": "function",
+        "description": "Draws a polygon shape by providing the outline (contour) of the shape. This includes convex or concave shapes. Self-intersecting shapes, however, are not supported and will result in undefined behavior.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newPolygon.html",
+        "snippet": "display.newPolygon( ${1:x}, ${2:y}, ${3:vertices} )"
+    },
+    {
+        "displayText": "display.newPolygon( parent, x, y, vertices )",
+        "type": "function",
+        "description": "Draws a polygon shape by providing the outline (contour) of the shape. This includes convex or concave shapes. Self-intersecting shapes, however, are not supported and will result in undefined behavior.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newPolygon.html",
+        "snippet": "display.newPolygon( ${1:parent}, ${2:x}, ${3:y}, ${4:vertices} )"
+    },
+    {
+        "displayText": "display.newRect( x, y, width, height )",
+        "type": "function",
+        "description": "Creates a rectangle object. The local origin is at the center of the rectangle and the anchor point is initialized to this local origin.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newRect.html",
+        "snippet": "display.newRect( ${1:x}, ${2:y}, ${3:width}, ${4:height} )"
+    },
+    {
+        "displayText": "display.newRect( parent, x, y, width, height )",
+        "type": "function",
+        "description": "Creates a rectangle object. The local origin is at the center of the rectangle and the anchor point is initialized to this local origin.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newRect.html",
+        "snippet": "display.newRect( ${1:parent}, ${2:x}, ${3:y}, ${4:width}, ${5:height} )"
+    },
+    {
+        "displayText": "display.newRoundedRect( x, y, width, height, cornerRadius )",
+        "type": "function",
+        "description": "Creates a rounded rectangle object. The corners are rounded by quarter circles of a specified radius value. The local origin is at the center of the rectangle and the anchor point is initialized to this local origin.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newRoundedRect.html",
+        "snippet": "display.newRoundedRect( ${1:x}, ${2:y}, ${3:width}, ${4:height}, ${5:cornerRadius} )"
+    },
+    {
+        "displayText": "display.newRoundedRect( parent, x, y, width, height, cornerRadius )",
+        "type": "function",
+        "description": "Creates a rounded rectangle object. The corners are rounded by quarter circles of a specified radius value. The local origin is at the center of the rectangle and the anchor point is initialized to this local origin.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newRoundedRect.html",
+        "snippet": "display.newRoundedRect( ${1:parent}, ${2:x}, ${3:y}, ${4:width}, ${5:height}, ${6:cornerRadius} )"
+    },
+    {
+        "displayText": "display.newSnapshot( w, h )",
+        "type": "function",
+        "description": "Snapshot objects let you capture a group of display objects and render them into a flattened image. The image is defined by objects that are added to the snapshot's group property.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newSnapshot.html",
+        "snippet": "display.newSnapshot( ${1:w}, ${2:h} )"
+    },
+    {
+        "displayText": "display.newSnapshot( parent, w, h )",
+        "type": "function",
+        "description": "Snapshot objects let you capture a group of display objects and render them into a flattened image. The image is defined by objects that are added to the snapshot's group property.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newSnapshot.html",
+        "snippet": "display.newSnapshot( ${1:parent}, ${2:w}, ${3:h} )"
+    },
+    {
+        "displayText": "display.newSprite( imageSheet, sequenceData )",
+        "type": "function",
+        "description": "Creates a sprite object. Sprites allow for animated sequences of frames that reside on image\u00a0sheets. Please see the Sprite Animation and Image Sheets guides for more information.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newSprite.html",
+        "snippet": "display.newSprite( ${1:imageSheet}, ${2:sequenceData} )"
+    },
+    {
+        "displayText": "display.newSprite( parent, imageSheet, sequenceData )",
+        "type": "function",
+        "description": "Creates a sprite object. Sprites allow for animated sequences of frames that reside on image\u00a0sheets. Please see the Sprite Animation and Image Sheets guides for more information.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newSprite.html",
+        "snippet": "display.newSprite( ${1:parent}, ${2:imageSheet}, ${3:sequenceData} )"
+    },
+    {
+        "displayText": "display.newText( options )",
+        "type": "function",
+        "description": "Creates a text object. The local origin is at the center of the text and the anchor point is initialized to this local origin.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/newText.html",
+        "snippet": "display.newText( ${1:options} )"
+    },
+    {
+        "displayText": "display.remove( object )",
+        "type": "function",
+        "description": "Removes a group or object if not nil.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/remove.html",
+        "snippet": "display.remove( ${1:object} )"
+    },
+    {
+        "displayText": "display.save( displayObject, options )",
+        "type": "function",
+        "description": "Renders the display object referenced by first argument into a JPEG or PNG image and saves it as a new file. The display object must currently be in the display hierarchy or no image will be saved. If the object is a display group, all children are also rendered.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/save.html",
+        "snippet": "display.save( ${1:displayObject}, ${2:options} )"
+    },
+    {
+        "displayText": "display.setDefault( key, value )",
+        "type": "function",
+        "description": "Set default display values including default colors for display objects, anchor point defaults, texture wrapping settings, etc.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/setDefault.html",
+        "snippet": "display.setDefault( ${1:key}, ${2:value} )"
+    },
+    {
+        "displayText": "display.setDefault( key, r, g, b, alpha )",
+        "type": "function",
+        "description": "Set default display values including default colors for display objects, anchor point defaults, texture wrapping settings, etc.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/setDefault.html",
+        "snippet": "display.setDefault( ${1:key}, ${2:r}, ${3:g}, ${4:b}, ${5:alpha} )"
+    },
+    {
+        "displayText": "display.setDefault( key, r, g, b )",
+        "type": "function",
+        "description": "Set default display values including default colors for display objects, anchor point defaults, texture wrapping settings, etc.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/setDefault.html",
+        "snippet": "display.setDefault( ${1:key}, ${2:r}, ${3:g}, ${4:b} )"
+    },
+    {
+        "displayText": "display.setDefault( key, gray )",
+        "type": "function",
+        "description": "Set default display values including default colors for display objects, anchor point defaults, texture wrapping settings, etc.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/setDefault.html",
+        "snippet": "display.setDefault( ${1:key}, ${2:gray} )"
+    },
+    {
+        "displayText": "display.setDefault( key, gray, alpha )",
+        "type": "function",
+        "description": "Set default display values including default colors for display objects, anchor point defaults, texture wrapping settings, etc.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/setDefault.html",
+        "snippet": "display.setDefault( ${1:key}, ${2:gray}, ${3:alpha} )"
+    },
+    {
+        "displayText": "display.setDrawMode( key, value )",
+        "type": "function",
+        "description": "Sets the draw mode.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/setDrawMode.html",
+        "snippet": "display.setDrawMode( ${1:key}, ${2:value} )"
+    },
+    {
+        "displayText": "display.setStatusBar( mode )",
+        "type": "function",
+        "description": "Hides or changes the appearance of the status bar on most devices.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/display\/setStatusBar.html",
+        "snippet": "display.setStatusBar( ${1:mode} )"
+    },
+    {
+        "displayText": "assert( v [, message] )",
+        "type": "function",
+        "description": "Issues an error and aborts the program when the value of its first argument is false (i.e. nil or false). Otherwise, it returns all its arguments.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/assert.html",
+        "snippet": "assert( ${1:v} ${2:[, message]} )"
+    },
+    {
+        "displayText": "collectgarbage( [opt [, arg]] )",
+        "type": "function",
+        "description": "A generic interface to Lua's garbage collector. Using this function is not required because Lua has automatic garbage collection features.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/collectgarbage.html",
+        "snippet": "collectgarbage( ${1:[opt [, arg]]} )"
+    },
+    {
+        "displayText": "error( message [, level] )",
+        "type": "function",
+        "description": "Terminates the last protected function called (see: pcall()) and returns the first argument as the error message.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/error.html",
+        "snippet": "error( ${1:message} ${2:[, level]} )"
+    },
+    {
+        "displayText": "getfenv( [f] )",
+        "type": "function",
+        "description": "Returns the current environment in use by a specified Function. The first argument can be a Function or a Number that specifies the function at that stack level: level 1 is the function calling getfenv(). If the given function is not a Lua function, or if f is 0, getfenv() returns the global environment. The default for f is 1.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/getfenv.html",
+        "snippet": "getfenv( ${1:[f]} )"
+    },
+    {
+        "displayText": "getmetatable( object )",
+        "type": "function",
+        "description": "Gets the metatable of a specified Table. If the table does not have a metatable, it returns nil. Otherwise, if the object's metatable has a __metatable field, it returns the associated value. Otherwise, it returns the metatable of the given table.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/getmetatable.html",
+        "snippet": "getmetatable( ${1:object} )"
+    },
+    {
+        "displayText": "ipairs( t )",
+        "type": "function",
+        "description": "This function returns three values: an iteration Function, a Table, and 0. For example, the following construction will iterate over the pairs (1,t[1]), (2,t[2]), ..., up to the first integer key absent from the table.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/ipairs.html",
+        "snippet": "ipairs( ${1:t} )"
+    },
+    {
+        "displayText": "next( array [, index] )",
+        "type": "function",
+        "description": "Allows a program to traverse all fields of an Array. next() returns the next index of the array and its associated value. When called with nil as its second argument, next() returns an initial index and its associated value. When called with the last index, or with nil in an empty array, next() returns nil. If the second argument is absent, then it is interpreted as nil. In particular, you can use next(t) to check whether an array is empty.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/next.html",
+        "snippet": "next( ${1:array} ${2:[, index]} )"
+    },
+    {
+        "displayText": "pairs( t )",
+        "type": "function",
+        "description": "Returns three values: the next function, a table, or nil. So, the following construction will iterate over all key-value pairs of table t.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/pairs.html",
+        "snippet": "pairs( ${1:t} )"
+    },
+    {
+        "displayText": "pcall( f [, ...] )",
+        "type": "function",
+        "description": "Calls a function specified as the first argument, with the given arguments (as the following arguments) in protected mode. This means that any error inside f is not propagated; instead, pcall() catches the error and returns a status code. Its first result is the status code (a Boolean), which is true if the call succeeds without errors. In such case, pcall() also returns all results from the call, after this first result. In case of any error, pcall() returns false plus the error message.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/pcall.html",
+        "snippet": "pcall( ${1:f} ${2:[, ...]} )"
+    },
+    {
+        "displayText": "print( ... )",
+        "type": "function",
+        "description": "Receives any number of arguments and prints their values to stdout (Corona Simulator Console, Xcode, ADB, etc.) using the tostring() function which converts them to strings. print() is not intended for formatted output, but rather as a quick way to show a value, typically for debugging. For formatted output, use string.format.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/print.html",
+        "snippet": "print( ${1:...} )"
+    },
+    {
+        "displayText": "rawequal( value1, value2 )",
+        "type": "function",
+        "description": "Performs an equality (==) check between two values without invoking a metamethod. Returns a Boolean.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/rawequal.html",
+        "snippet": "rawequal( ${1:value1}, ${2:value2} )"
+    },
+    {
+        "displayText": "rawget( table, index )",
+        "type": "function",
+        "description": "Gets the real value of table[index], without invoking any metamethod. table must be a Table; index may be any Number or String.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/rawget.html",
+        "snippet": "rawget( ${1:table}, ${2:index} )"
+    },
+    {
+        "displayText": "rawset( table, index, value )",
+        "type": "function",
+        "description": "Sets the real value of table[index] to value without invoking any metamethod. table must be a table, index any value different from nil, and value any Lua value.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/rawset.html",
+        "snippet": "rawset( ${1:table}, ${2:index}, ${3:value} )"
+    },
+    {
+        "displayText": "select( index, ... )",
+        "type": "function",
+        "description": "If index is a number, select() returns all arguments after argument number index. Otherwise, index must be the string #, and select() returns the total number of extra arguments it received.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/select.html",
+        "snippet": "select( ${1:index}, ${2:...} )"
+    },
+    {
+        "displayText": "setfenv( f, table )",
+        "type": "function",
+        "description": "Sets the environment \u2014 or the table where Lua keeps all its global variables \u2014 to be used by the given function.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/setfenv.html",
+        "snippet": "setfenv( ${1:f}, ${2:table} )"
+    },
+    {
+        "displayText": "setmetatable( table, metatable )",
+        "type": "function",
+        "description": "Sets the metatable for the given table (you cannot change the metatable of other types from Lua, only from C). If metatable is nil, removes the metatable of the given table. If the original metatable has a __metatable field, it raises an error.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/setmetatable.html",
+        "snippet": "setmetatable( ${1:table}, ${2:metatable} )"
+    },
+    {
+        "displayText": "tonumber( e [, base ] )",
+        "type": "function",
+        "description": "Tries to convert its argument to a number. If the argument is already a number or a string that can be converted to a number, tonumber() returns the number, otherwise, it returns nil.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/tonumber.html",
+        "snippet": "tonumber( ${1:e} ${2:[, base ]} )"
+    },
+    {
+        "displayText": "tostring( e )",
+        "type": "function",
+        "description": "This API is a useful debug tool for displaying or concatenating nil values. For complete control of how numbers are converted to strings, use string.format().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/tostring.html",
+        "snippet": "tostring( ${1:e} )"
+    },
+    {
+        "displayText": "type( v )",
+        "type": "function",
+        "description": "Returns the type of its argument. Possible results are:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/type.html",
+        "snippet": "type( ${1:v} )"
+    },
+    {
+        "displayText": "unpack( list [, i [, j ]] )",
+        "type": "function",
+        "description": "Returns the elements from the given table. This function is equivalent to the following:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/global\/unpack.html",
+        "snippet": "unpack( ${1:list} ${2:[, i [, j ]]} )"
+    },
+    {
+        "displayText": "graphics.defineEffect( effect )",
+        "type": "function",
+        "description": "This function allows you to extend Corona and define a custom shader effect. Your custom effect can define either a vertex kernel or a fragment kernel (or\u00a0both). These kernels are similar to shaders, except that they must define functions with a specific name and which conform to specific function signatures.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/graphics\/defineEffect.html",
+        "snippet": "graphics.defineEffect( ${1:effect} )"
+    },
+    {
+        "displayText": "graphics.newImageSheet( filename, [baseDir, ] options )",
+        "type": "function",
+        "description": "ImageSheet objects allow you to load multiple graphics from a single image file (also known as a spritesheet). Image sheets can be used for static images (useful for preloading many static images) and animated sprites.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/graphics\/newImageSheet.html",
+        "snippet": "graphics.newImageSheet( ${1:filename}, ${2:[baseDir, ]} ${3:options} )"
+    },
+    {
+        "displayText": "graphics.newMask( filename [, baseDir] )",
+        "type": "function",
+        "description": "Creates a bit mask from an image file. The image is converted internally to grayscale. The white pixels of the bit mask allow the covered image to be visible, while black pixels hide (mask) the covered image. The area outside of the mask must be filled with black pixels which mask off the area outside the mask image.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/graphics\/newMask.html",
+        "snippet": "graphics.newMask( ${1:filename} ${2:[, baseDir]} )"
+    },
+    {
+        "displayText": "graphics.newOutline( coarsenessInTexels, imageFileName [, baseDir] )",
+        "type": "function",
+        "description": "This function produces the outline of the shape obtained from an image file or a frame within an ImageSheet. A shape is recognized by the image's non-transparent alpha value. Generally, simpler images produce better outlines.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/graphics\/newOutline.html",
+        "snippet": "graphics.newOutline( ${1:coarsenessInTexels}, ${2:imageFileName} ${3:[, baseDir]} )"
+    },
+    {
+        "displayText": "graphics.newTexture( params )",
+        "type": "function",
+        "description": "Creates a TextureResource object which allows you to access and manage textures. This can be used to pre-load a texture\/image and prevent it from being disposed when there is no display object using it.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/graphics\/newTexture.html",
+        "snippet": "graphics.newTexture( ${1:params} )"
+    },
+    {
+        "displayText": "graphics.releaseTextures( params )",
+        "type": "function",
+        "description": "This convenience function disposes\/releases all TextureResource objects of a specific type.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/graphics\/releaseTextures.html",
+        "snippet": "graphics.releaseTextures( ${1:params} )"
+    },
+    {
+        "displayText": "io.close( [file] )",
+        "type": "function",
+        "description": "Closes an open file handle. Equivalent to file:close(). If a file handle is not specified, this function closes the default output file.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/io\/close.html",
+        "snippet": "io.close( ${1:[file]} )"
+    },
+    {
+        "displayText": "io.flush()",
+        "type": "function",
+        "description": "Flushes the default output file. Equivalent to io.output():flush.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/io\/flush.html",
+        "snippet": "io.flush()"
+    },
+    {
+        "displayText": "io.input( file )",
+        "type": "function",
+        "description": "Sets the standard input file. When called with a file handle, it simply sets this file handle as the default input file. When called without parameters, it returns the current default input file.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/io\/input.html",
+        "snippet": "io.input( ${1:file} )"
+    },
+    {
+        "displayText": "io.lines( file )",
+        "type": "function",
+        "description": "Opens the given file name in read mode and returns an iterator function that, each time it is called, returns a new line from the file.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/io\/lines.html",
+        "snippet": "io.lines( ${1:file} )"
+    },
+    {
+        "displayText": "io.open( file [, mode] )",
+        "type": "function",
+        "description": "This function opens a file for reading or writing, in the string (default) or binary mode. It returns a new file handle or, in case of errors, nil plus an error message. This function can also be used to create a new file.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/io\/open.html",
+        "snippet": "io.open( ${1:file} ${2:[, mode]} )"
+    },
+    {
+        "displayText": "io.output( [file] )",
+        "type": "function",
+        "description": "Sets the standard output file. When called with a file name, it opens the named file in text mode and sets its handle as the default output file. When called with a file handle, it simply sets this file handle as the default output file. When called without parameters, it returns the current default output file.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/io\/output.html",
+        "snippet": "io.output( ${1:[file]} )"
+    },
+    {
+        "displayText": "io.read( [fmt1] [, fmt2] [, ...] )",
+        "type": "function",
+        "description": "Reads the file set by io.input(), according to the given formats, which specify what to read. For each format, the function returns a string or a number with the characters read, or nil if it cannot read data with the specified format. When called without formats, it uses a default format that reads the entire next line (\"*l\").",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/io\/read.html",
+        "snippet": "io.read( ${1:[fmt1]} ${2:[, fmt2]} ${3:[, ...]} )"
+    },
+    {
+        "displayText": "io.tmpfile()",
+        "type": "function",
+        "description": "Opens a temporary file for reading and writing and returns a handle to it. When the app ends normally, this file will be deleted.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/io\/tmpfile.html",
+        "snippet": "io.tmpfile()"
+    },
+    {
+        "displayText": "io.type( obj )",
+        "type": "function",
+        "description": "Checks whether obj is a valid file handle. Returns the string \"file\" if obj is an open file handle, \"closed file\" if obj is a closed file handle, or nil if obj is not a file handle.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/io\/type.html",
+        "snippet": "io.type( ${1:obj} )"
+    },
+    {
+        "displayText": "io.write( arg1 [, arg2] [, ...] )",
+        "type": "function",
+        "description": "Writes the value of each of its arguments to the file. The arguments must be strings or numbers. To write other values, use tostring() or string.format() before writing.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/io\/write.html",
+        "snippet": "io.write( ${1:arg1} ${2:[, arg2]} ${3:[, ...]} )"
+    },
+    {
+        "displayText": "json.decode( data [, position [, nullval]] )",
+        "type": "function",
+        "description": "Decodes the JSON-encoded data structure and returns a Lua object (table) with the appropriate data. The return values are a Lua object or nil, the position of the next character that doesn't belong to the object, or (in case of errors) an error message.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/json\/decode.html",
+        "snippet": "json.decode( ${1:data} ${2:[, position [, nullval]]} )"
+    },
+    {
+        "displayText": "json.encode( t [, options] )",
+        "type": "function",
+        "description": "Returns the Lua object (table) as a JSON-encoded string. Since items with nil values in a Lua table effectively don't exist, you should use json.null as a placeholder value if you need to preserve array indices in your JSON (see discussion of nullval in json.decode()).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/json\/encode.html",
+        "snippet": "json.encode( ${1:t} ${2:[, options]} )"
+    },
+    {
+        "displayText": "json.prettify( obj )",
+        "type": "function",
+        "description": "Returns a string which is a human readable representation of the given object (or valid JSON string). The string is indented and the top-level keys are sorted into alphabetical order.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/json\/prettify.html",
+        "snippet": "json.prettify( ${1:obj} )"
+    },
+    {
+        "displayText": "licensing.init( providerName )",
+        "type": "function",
+        "description": "Initializes the licensing service library by specifying the name of the licensing provider. Currently, only \"google\" is supported.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/licensing\/init.html",
+        "snippet": "licensing.init( ${1:providerName} )"
+    },
+    {
+        "displayText": "licensing.verify( listener )",
+        "type": "function",
+        "description": "Starts the licensing verification process.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/licensing\/verify.html",
+        "snippet": "licensing.verify( ${1:listener} )"
+    },
+    {
+        "displayText": "media.capturePhoto( { listener, [, destination] } )",
+        "type": "function",
+        "description": "Opens a platform-specific interface to the device's camera. This function is asynchronous, meaning that it returns immediately so the calling code will continue to execute until the end of its scope; after that, the application will be suspended until the session is complete. By default, the image object is added to the top of the current stage, although there is an option to save the image to a directory instead.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/capturePhoto.html",
+        "snippet": "media.capturePhoto( { ${1:listener}, ${2:[, destination]} } )"
+    },
+    {
+        "displayText": "media.captureVideo ( { listener [, preferredQuality] [, preferredMaxDuration] } )",
+        "type": "function",
+        "description": "Opens a platform-specific interface to the device's camera. This function is asynchronous, meaning that it returns immediately so the calling code will continue to execute until the end of its scope; after that, the application will be suspended until the session is complete. A listener is required to handle the captured object (URL) which can be used in native.newVideo() and media.playVideo().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/captureVideo.html",
+        "snippet": "media.captureVideo ( { ${1:listener} ${2:[, preferredQuality]} ${3:[, preferredMaxDuration]} } )"
+    },
+    {
+        "displayText": "media.hasSource( mediaSource )",
+        "type": "function",
+        "description": "Determines if the given media source, such as a camera or photo library, is available on the platform. This function should be called before calling media.selectPhoto() or media.capturePhoto() to determine if that media service is available. Returns true if the media source is available on the platform\/device. Returns false if not.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/hasSource.html",
+        "snippet": "media.hasSource( ${1:mediaSource} )"
+    },
+    {
+        "displayText": "media.newEventSound( filename [, baseDir] )",
+        "type": "function",
+        "description": "Loads the event sound (1-3 seconds) from a sound file and returns an event sound ID that can be passed to media.playEventSound().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/newEventSound.html",
+        "snippet": "media.newEventSound( ${1:filename} ${2:[, baseDir]} )"
+    },
+    {
+        "displayText": "media.newRecording( [path] )",
+        "type": "function",
+        "description": "Create an object for audio recording (Recording).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/newRecording.html",
+        "snippet": "media.newRecording( ${1:[path]} )"
+    },
+    {
+        "displayText": "media.pauseSound()",
+        "type": "function",
+        "description": "Pauses playback of the extended sound currently opened by the previous call to media.playSound(). Use media.playSound() to resume playback of a paused sound.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/pauseSound.html",
+        "snippet": "media.pauseSound()"
+    },
+    {
+        "displayText": "media.playEventSound( sound [, baseDir] [, completionListener] )",
+        "type": "function",
+        "description": "Plays an event sound (1-3 seconds). The first argument may be either an event sound ID or a filename for the event sound. Recommended for short sounds, especially to avoid performance hiccups.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/playEventSound.html",
+        "snippet": "media.playEventSound( ${1:sound} ${2:[, baseDir]} ${3:[, completionListener]} )"
+    },
+    {
+        "displayText": "media.playSound( soundfile [, baseDir] [, onComplete] )",
+        "type": "function",
+        "description": "Plays an extended sound (as opposed to an \"event sound\" which is typically 1-3 seconds in duration), or resumes play of a paused extended sound. You can only have one such sound file open at a time.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/playSound.html",
+        "snippet": "media.playSound( ${1:soundfile} ${2:[, baseDir]} ${3:[, onComplete]} )"
+    },
+    {
+        "displayText": "media.playSound( soundfile [, baseDir] [, loop] )",
+        "type": "function",
+        "description": "Plays an extended sound (as opposed to an \"event sound\" which is typically 1-3 seconds in duration), or resumes play of a paused extended sound. You can only have one such sound file open at a time.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/playSound.html",
+        "snippet": "media.playSound( ${1:soundfile} ${2:[, baseDir]} ${3:[, loop]} )"
+    },
+    {
+        "displayText": "media.playVideo( path [, baseSource ], showControls, listener )",
+        "type": "function",
+        "description": "Plays the video at the specified path (both local and remote) in a device-specific popup media player.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/playVideo.html",
+        "snippet": "media.playVideo( ${1:path} ${2:[, baseSource ]}, ${3:showControls}, ${4:listener} )"
+    },
+    {
+        "displayText": "media.save( filename [, baseDir] )",
+        "type": "function",
+        "description": "Adds specified file to photo library.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/save.html",
+        "snippet": "media.save( ${1:filename} ${2:[, baseDir]} )"
+    },
+    {
+        "displayText": "media.selectPhoto ( { listener [, mediaSource] [, destination] [, origin] [, permittedArrowDirections] } )",
+        "type": "function",
+        "description": "Opens a platform-specific interface to the device's photo library. This function is asynchronous, meaning that it returns immediately so the calling code will continue to execute until the end of its scope; after that, the application will be suspended until the session is complete. By default, the image object is added to the top of the current stage, although there is an option to save the image to a directory instead.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/selectPhoto.html",
+        "snippet": "media.selectPhoto ( { ${1:listener} ${2:[, mediaSource]} ${3:[, destination]} ${4:[, origin]} ${5:[, permittedArrowDirections]} } )"
+    },
+    {
+        "displayText": "media.selectVideo ( { listener [, mediaSource] [, origin] [, permittedArrowDirections] } )",
+        "type": "function",
+        "description": "Opens a platform-specific interface to the device's photo library. This function is asynchronous, meaning that it returns immediately so the calling code will continue to execute until the end of its scope; after that, the application will be suspended until the session is complete.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/selectVideo.html",
+        "snippet": "media.selectVideo ( { ${1:listener} ${2:[, mediaSource]} ${3:[, origin]} ${4:[, permittedArrowDirections]} } )"
+    },
+    {
+        "displayText": "media.setSoundVolume( volume )",
+        "type": "function",
+        "description": "Adjusts the playback volume of an extended sound (media.playSound()). This setting can be adjusted at any time before or during the extended sound playback.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/setSoundVolume.html",
+        "snippet": "media.setSoundVolume( ${1:volume} )"
+    },
+    {
+        "displayText": "media.stopSound()",
+        "type": "function",
+        "description": "Stops playback of the extended sound currently opened by the previous call to media.playSound().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/media\/stopSound.html",
+        "snippet": "media.stopSound()"
+    },
+    {
+        "displayText": "native.cancelAlert( alert )",
+        "type": "function",
+        "description": "Dismisses an alert box programmatically. For example, you may wish to have a popup alert that automatically disappears after ten seconds even if the user doesn't click it. In that case, you could call this function at the end of a timer.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/cancelAlert.html",
+        "snippet": "native.cancelAlert( ${1:alert} )"
+    },
+    {
+        "displayText": "native.cancelWebPopup()",
+        "type": "function",
+        "description": "Dismisses the currently displaying web popup. This function takes no arguments because only one web popup can be shown at one time (not to be confused with native web views which can have multiple instances shown at once).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/cancelWebPopup.html",
+        "snippet": "native.cancelWebPopup()"
+    },
+    {
+        "displayText": "native.canShowPopup( name )",
+        "type": "function",
+        "description": "Returns whether or not the popup type can be shown. This usually defines whether the popup will actually be displayed. However, in the case of \"appStore\", a result of true does not guarantee that the popup will be displayed because, in those cases, the particular popup will depend on additional parameters.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/canShowPopup.html",
+        "snippet": "native.canShowPopup( ${1:name} )"
+    },
+    {
+        "displayText": "native.getFontNames()",
+        "type": "function",
+        "description": "Returns an array of the available native fonts.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/getFontNames.html",
+        "snippet": "native.getFontNames()"
+    },
+    {
+        "displayText": "native.getProperty( key )",
+        "type": "function",
+        "description": "Gets the value of a platform-specific property.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/getProperty.html",
+        "snippet": "native.getProperty( ${1:key} )"
+    },
+    {
+        "displayText": "native.getSync( filename, params )",
+        "type": "function",
+        "description": "Gets the iCloud automatic backup settings for files in the system.DocumentsDirectory on OS X and iOS systems.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/getSync.html",
+        "snippet": "native.getSync( ${1:filename}, ${2:params} )"
+    },
+    {
+        "displayText": "native.newFont( name [, size] )",
+        "type": "function",
+        "description": "Creates a font object that you can use to specify fonts in native text fields and text boxes.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/newFont.html",
+        "snippet": "native.newFont( ${1:name} ${2:[, size]} )"
+    },
+    {
+        "displayText": "native.newMapView( centerX, centerY, width, height )",
+        "type": "function",
+        "description": "Renders a map view within the specified boundaries and returns a display object wrapper. On the map view, touch events are available when you add a mapLocation event listener.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/newMapView.html",
+        "snippet": "native.newMapView( ${1:centerX}, ${2:centerY}, ${3:width}, ${4:height} )"
+    },
+    {
+        "displayText": "native.newTextBox( centerX, centerY, width, height )",
+        "type": "function",
+        "description": "Creates a scrollable, multi-line text box for text input. For single-line text input, see native.newTextField().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/newTextBox.html",
+        "snippet": "native.newTextBox( ${1:centerX}, ${2:centerY}, ${3:width}, ${4:height} )"
+    },
+    {
+        "displayText": "native.newTextField( centerX, centerY, width, height )",
+        "type": "function",
+        "description": "Creates a single-line text field for text input. For multi-line text input, see native.newTextBox().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/newTextField.html",
+        "snippet": "native.newTextField( ${1:centerX}, ${2:centerY}, ${3:width}, ${4:height} )"
+    },
+    {
+        "displayText": "native.newVideo( centerX, centerY, width, height )",
+        "type": "function",
+        "description": "Returns a video object that can be moved and rotated. This API supports local videos (in\u00a0one of the system directories) or from a remote location (server).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/newVideo.html",
+        "snippet": "native.newVideo( ${1:centerX}, ${2:centerY}, ${3:width}, ${4:height} )"
+    },
+    {
+        "displayText": "native.newWebView( centerX, centerY, width, height )",
+        "type": "function",
+        "description": "Loads a web page in a web view container. Native web views differ from web popups in that you can move them (via x\/y properties) or rotate them (via the rotation property) in the same manner as other display objects.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/newWebView.html",
+        "snippet": "native.newWebView( ${1:centerX}, ${2:centerY}, ${3:width}, ${4:height} )"
+    },
+    {
+        "displayText": "native.requestExit()",
+        "type": "function",
+        "description": "Closes the application window on Android or Windows Phone gracefully without terminating the process.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/requestExit.html",
+        "snippet": "native.requestExit()"
+    },
+    {
+        "displayText": "native.setActivityIndicator( state )",
+        "type": "function",
+        "description": "Displays or hides a platform-specific activity indicator. Touch events are ignored while the indicator is shown.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/setActivityIndicator.html",
+        "snippet": "native.setActivityIndicator( ${1:state} )"
+    },
+    {
+        "displayText": "native.setKeyboardFocus( textField )",
+        "type": "function",
+        "description": "Sets keyboard focus on a native.newTextField() or native.newTextBox() and shows (or\u00a0hides) the keyboard. Pass nil to remove focus and hide the keyboard. Hiding the keyboard dispatches an \"ended\" phase to the native object's listener function.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/setKeyboardFocus.html",
+        "snippet": "native.setKeyboardFocus( ${1:textField} )"
+    },
+    {
+        "displayText": "native.setProperty( key, value )",
+        "type": "function",
+        "description": "Sets a platform-specific property.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/setProperty.html",
+        "snippet": "native.setProperty( ${1:key}, ${2:value} )"
+    },
+    {
+        "displayText": "native.showAlert( title, message [, { buttonLabels } [, listener] ] )",
+        "type": "function",
+        "description": "Displays a popup alert box with one or more buttons, using a native alert control. Program activity, including animation, will continue in the background, but all other user interactivity will be blocked until the user selects a button or cancels the dialog.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/showAlert.html",
+        "snippet": "native.showAlert( ${1:title}, ${2:message} ${3:[, { buttonLabels } [, listener] ]} )"
+    },
+    {
+        "displayText": "native.showPopup( name )",
+        "type": "function",
+        "description": "Displays the operating system's default popup window for a specified service. Displaying this popup suspends the app on both iOS and Android.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/showPopup.html",
+        "snippet": "native.showPopup( ${1:name} )"
+    },
+    {
+        "displayText": "native.showPopup( name, options )",
+        "type": "function",
+        "description": "Displays the operating system's default popup window for a specified service. Displaying this popup suspends the app on both iOS and Android.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/showPopup.html",
+        "snippet": "native.showPopup( ${1:name}, ${2:options} )"
+    },
+    {
+        "displayText": "native.showWebPopup( [x, y, width, height,] url, [options] )",
+        "type": "function",
+        "description": "Creates a web popup that loads a local or remote web page.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/showWebPopup.html",
+        "snippet": "native.showWebPopup( ${1:[x, y, width, height,] url, [options]} )"
+    },
+    {
+        "displayText": "native.setSync( filename, params )",
+        "type": "function",
+        "description": "Sets the iCloud automatic backup flag for files in the system.DocumentsDirectory on OS X and iOS systems.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/native\/setSync.html",
+        "snippet": "native.setSync( ${1:filename}, ${2:params} )"
+    },
+    {
+        "displayText": "network.canDetectNetworkStatusChanges",
+        "type": "property",
+        "description": "Returns true if network reachability events are supported on the current platform.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/network\/canDetectNetworkStatusChanges.html",
+        "snippet": "network.canDetectNetworkStatusChanges"
+    },
+    {
+        "displayText": "network.setStatusListener( hostURL, listener )",
+        "type": "function",
+        "description": "Starts monitoring a host for its network reachability status. This API is designed around the idea that you are monitoring individual hosts and not the hardware directly. Potentially, some hosts might continue to be reachable while others are not due to internet conditions, firewall configurations, authentication rules, and whether you need full DNS routing.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/network\/setStatusListener.html",
+        "snippet": "network.setStatusListener( ${1:hostURL}, ${2:listener} )"
+    },
+    {
+        "displayText": "network.request( url, method, listener [, params] )",
+        "type": "function",
+        "description": "Makes an asynchronous HTTP or HTTPS request to a URL. This function returns a handle that can be passed to network.cancel() in order to cancel the request.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/network\/request.html",
+        "snippet": "network.request( ${1:url}, ${2:method}, ${3:listener} ${4:[, params]} )"
+    },
+    {
+        "displayText": "network.cancel( requestId )",
+        "type": "function",
+        "description": "Cancel an outstanding network request made with network.request(), network.upload(), or network.download().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/network\/cancel.html",
+        "snippet": "network.cancel( ${1:requestId} )"
+    },
+    {
+        "displayText": "network.download( url, method, listener [, params], filename [, baseDirectory] )",
+        "type": "function",
+        "description": "This API is a convenience method that is very similar to the asynchronous network.request(), except that it always attempts to download the response to a local file that you specify. In fact, this method simply calls network.request(), putting the destination filename and baseDirectory parameters into params.response and specifying \"download\" progress notifications.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/network\/download.html",
+        "snippet": "network.download( ${1:url}, ${2:method}, ${3:listener} ${4:[, params]}, ${5:filename} ${6:[, baseDirectory]} )"
+    },
+    {
+        "displayText": "network.upload( url, method, listener [, params], filename [, baseDirectory] [, contentType] )",
+        "type": "function",
+        "description": "This API is a convenience method that is very similar to the asynchronous network.request(), except that always attempts to upload the request from a local file that you specify. In fact, this method simply calls network.request(), putting the source filename and baseDirectory parameters into a params.body table, adding contentType as a params.headers request header value, and specifying \"upload\" progress notifications.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/network\/upload.html",
+        "snippet": "network.upload( ${1:url}, ${2:method}, ${3:listener} ${4:[, params]}, ${5:filename} ${6:[, baseDirectory]} ${7:[, contentType]} )"
+    },
+    {
+        "displayText": "os.clock()",
+        "type": "function",
+        "description": "Returns an approximation of the amount in seconds of CPU time used by the program.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/os\/clock.html",
+        "snippet": "os.clock()"
+    },
+    {
+        "displayText": "os.date( [format [, time] ] )",
+        "type": "function",
+        "description": "Returns a string or a table containing date and time, formatted according to the given string format. When called without arguments, os.date() returns a reasonable date and time representation that depends on the host system and on the current locale (that\u00a0is, os.date() is equivalent to os.date(\"%c\")).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/os\/date.html",
+        "snippet": "os.date( ${1:[format [, time] ]} )"
+    },
+    {
+        "displayText": "os.difftime( t1, t2 )",
+        "type": "function",
+        "description": "Returns the number of seconds from time t1 to time t2. In POSIX, Windows, and some other systems, this value is exactly t2 - t1.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/os\/difftime.html",
+        "snippet": "os.difftime( ${1:t1}, ${2:t2} )"
+    },
+    {
+        "displayText": "os.execute( cmd )",
+        "type": "function",
+        "description": "Passes a string to the operating system for execution and returns a system-dependent status code. This function is equivalent to the C function system().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/os\/execute.html",
+        "snippet": "os.execute( ${1:cmd} )"
+    },
+    {
+        "displayText": "os.exit( [ exit ] )",
+        "type": "function",
+        "description": "Calls the C function exit(), with an optional code, to terminate the host program. The default value for code is the success code.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/os\/exit.html",
+        "snippet": "os.exit( ${1:[ exit ]} )"
+    },
+    {
+        "displayText": "os.remove( file )",
+        "type": "function",
+        "description": "Deletes a file or directory and returns two possible values:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/os\/remove.html",
+        "snippet": "os.remove( ${1:file} )"
+    },
+    {
+        "displayText": "os.rename( oldname, newname )",
+        "type": "function",
+        "description": "Renames a file or directory and returns two possible values:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/os\/rename.html",
+        "snippet": "os.rename( ${1:oldname}, ${2:newname} )"
+    },
+    {
+        "displayText": "os.time( table )",
+        "type": "function",
+        "description": "Returns the current time in seconds from 1970 when called without arguments, or a time representing the date and time specified by the given table.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/os\/time.html",
+        "snippet": "os.time( ${1:table} )"
+    },
+    {
+        "displayText": "local name = require( \"moduleName\" )",
+        "type": "function",
+        "description": "Loads the given module.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/package\/require.html",
+        "snippet": "local name = require( \"${1:moduleName}\" )"
+    },
+    {
+        "displayText": "local name = require \"moduleName\"",
+        "type": "function",
+        "description": "Loads the given module.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/package\/require.html",
+        "snippet": "local name = require \"moduleName\"("
+    },
+    {
+        "displayText": "package.loaded",
+        "type": "property",
+        "description": "A table used by require() to control which modules are already loaded. When you require a module modname and package.loaded[modname] is not false, require() simply returns the value stored there.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/package\/loaded.html",
+        "snippet": "package.loaded"
+    },
+    {
+        "displayText": "package.loaders",
+        "type": "property",
+        "description": "A table used by require() to control how to load modules.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/package\/loaders.html",
+        "snippet": "package.loaders"
+    },
+    {
+        "displayText": "physics.addBody( object, [bodyType,] [params] )",
+        "type": "function",
+        "description": "This function turns almost any Corona display object into a simulated physical object with specific physical properties. It accepts the display object, an optional body type (string), and an optional params table containing key-value pairs that specify the properties for the physics body. Within this params table, the following apply:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/addBody.html",
+        "snippet": "physics.addBody( ${1:object}, ${2:[bodyType,]} ${3:[params]} )"
+    },
+    {
+        "displayText": "physics.fromMKS( unitName, value ) ",
+        "type": "function",
+        "description": "Convenience function for converting from MKS units to Corona units.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/fromMKS.html",
+        "snippet": "physics.fromMKS( ${1:unitName}, ${2:value} ) "
+    },
+    {
+        "displayText": "physics.getAverageCollisionPositions()",
+        "type": "function",
+        "description": "It's common for Box2D to report multiple contact points during a single iteration of a simulation.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/getAverageCollisionPositions.html",
+        "snippet": "physics.getAverageCollisionPositions()"
+    },
+    {
+        "displayText": "physics.getDebugErrorsEnabled()",
+        "type": "function",
+        "description": "This function is used to determine if extra physics errors are allowed to be caught by Box2D.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/getDebugErrorsEnabled.html",
+        "snippet": "physics.getDebugErrorsEnabled()"
+    },
+    {
+        "displayText": "physics.getGravity()",
+        "type": "function",
+        "description": "Returns the x and y components of the global gravity vector, in units of m\/s\u00b2. This takes advantage of the fact that Lua functions can return multiple values, which in this case are:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/getGravity.html",
+        "snippet": "physics.getGravity()"
+    },
+    {
+        "displayText": "physics.getMKS( key )",
+        "type": "function",
+        "description": "Get the MKS value of the physics simulation for specific keys.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/getMKS.html",
+        "snippet": "physics.getMKS( ${1:key} )"
+    },
+    {
+        "displayText": "physics.getReportCollisionsInContentCoordinates()",
+        "type": "function",
+        "description": "This function is used to determine if the content origin is the collision point in the collision, preCollision, and postCollision physics events.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/getReportCollisionsInContentCoordinates.html",
+        "snippet": "physics.getReportCollisionsInContentCoordinates()"
+    },
+    {
+        "displayText": "physics.newJoint( jointType, ... )",
+        "type": "function",
+        "description": "Joints can be used to assemble complex physical objects from multiple rigid bodies. For example, joints can be used to join the limbs of a ragdoll figure, attach the wheels of a vehicle to its body, create a moving elevator platform, and more.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/newJoint.html",
+        "snippet": "physics.newJoint( ${1:jointType}, ${2:...} )"
+    },
+    {
+        "displayText": "physics.newParticleSystem( params )",
+        "type": "function",
+        "description": "A ParticleSystem object contains particles with liquid-like behavior under the LiquidFun framework.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/newParticleSystem.html",
+        "snippet": "physics.newParticleSystem( ${1:params} )"
+    },
+    {
+        "displayText": "physics.pause()",
+        "type": "function",
+        "description": "Pause the physics engine.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/pause.html",
+        "snippet": "physics.pause()"
+    },
+    {
+        "displayText": "physics.queryRegion( upperLeftX, upperLeftY, lowerRightX, lowerRightY )",
+        "type": "function",
+        "description": "This function is used to find the objects that intersect with an axis-aligned (non-rotated) box. This box is defined by an upper-left coordinate and a lower-right coordinate.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/queryRegion.html",
+        "snippet": "physics.queryRegion( ${1:upperLeftX}, ${2:upperLeftY}, ${3:lowerRightX}, ${4:lowerRightY} )"
+    },
+    {
+        "displayText": "physics.rayCast( fromX, fromY, toX, toY, behavior )",
+        "type": "function",
+        "description": "This function is used to find the objects that collide with a line, and the collision points along that line.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/rayCast.html",
+        "snippet": "physics.rayCast( ${1:fromX}, ${2:fromY}, ${3:toX}, ${4:toY}, ${5:behavior} )"
+    },
+    {
+        "displayText": "physics.reflectRay( fromX, fromY, hit )",
+        "type": "function",
+        "description": "This function is used to reflect a vector as returned by physics.rayCast().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/reflectRay.html",
+        "snippet": "physics.reflectRay( ${1:fromX}, ${2:fromY}, ${3:hit} )"
+    },
+    {
+        "displayText": "physics.removeBody( object )",
+        "type": "function",
+        "description": "Removes a physics body from a display object without destroying the entire object. This removes the body created with physics.addBody().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/removeBody.html",
+        "snippet": "physics.removeBody( ${1:object} )"
+    },
+    {
+        "displayText": "physics.setAverageCollisionPositions( enabled )",
+        "type": "function",
+        "description": "Because it's common for Box2D to report multiple collision points during a single frame iteration, this setting is useful to report those points as one averaged point. This function applies to all the contact points in the collision, preCollision, and postCollision physics events.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/setAverageCollisionPositions.html",
+        "snippet": "physics.setAverageCollisionPositions( ${1:enabled} )"
+    },
+    {
+        "displayText": "physics.setContinuous( enabled )",
+        "type": "function",
+        "description": "By default, Box2D performs continuous collision detection, which prevents objects from \"tunneling.\" If it were turned off, an object that moves quickly enough could potentially pass through a thin wall.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/setContinuous.html",
+        "snippet": "physics.setContinuous( ${1:enabled} )"
+    },
+    {
+        "displayText": "physics.setDebugErrorsEnabled( enabled )",
+        "type": "function",
+        "description": "This function allows extra physics errors to be caught by Box2D.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/setDebugErrorsEnabled.html",
+        "snippet": "physics.setDebugErrorsEnabled( ${1:enabled} )"
+    },
+    {
+        "displayText": "physics.setDrawMode( mode )",
+        "type": "function",
+        "description": "Sets one of three possible \"rendering modes\" for the physics engine. While this feature will run on devices, it's most useful in the Corona Simulator when debugging unexpected physics engine behavior.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/setDrawMode.html",
+        "snippet": "physics.setDrawMode( ${1:mode} )"
+    },
+    {
+        "displayText": "physics.setGravity( gx, gy )",
+        "type": "function",
+        "description": "Sets the x and y components of the global gravity vector in units of m\/s\u00b2. The default is ( 0, 9.8 ) to simulate standard Earth gravity, pointing downward on the y axis.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/setGravity.html",
+        "snippet": "physics.setGravity( ${1:gx}, ${2:gy} )"
+    },
+    {
+        "displayText": "physics.setMKS( key, value )",
+        "type": "function",
+        "description": "Sets the MKS (meters, kilograms, and seconds) value of the physics simulation for specific keys. This is strictly for advanced purposes \u2014 the average developer and project will not require this function.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/setMKS.html",
+        "snippet": "physics.setMKS( ${1:key}, ${2:value} )"
+    },
+    {
+        "displayText": "physics.setPositionIterations( value )",
+        "type": "function",
+        "description": "Sets the accuracy of the engine's position calculations. The default value is 3.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/setPositionIterations.html",
+        "snippet": "physics.setPositionIterations( ${1:value} )"
+    },
+    {
+        "displayText": "physics.setReportCollisionsInContentCoordinates( enabled )",
+        "type": "function",
+        "description": "This function sets the content origin as the collision point in the collision, preCollision, and postCollision physics events.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/setReportCollisionsInContentCoordinates.html",
+        "snippet": "physics.setReportCollisionsInContentCoordinates( ${1:enabled} )"
+    },
+    {
+        "displayText": "physics.setScale( value )",
+        "type": "function",
+        "description": "Sets the internal pixels-per-meter ratio that is used in converting between on-screen Corona coordinates and simulated physics coordinates. This should be done only once, before any physical objects are instantiated.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/setScale.html",
+        "snippet": "physics.setScale( ${1:value} )"
+    },
+    {
+        "displayText": "physics.setTimeStep( dt )",
+        "type": "function",
+        "description": "Specifies either a frame-based (approximated) physics simulation or a time-based simulation.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/setTimeStep.html",
+        "snippet": "physics.setTimeStep( ${1:dt} )"
+    },
+    {
+        "displayText": "physics.setVelocityIterations( value )",
+        "type": "function",
+        "description": "Sets the accuracy of the engine's velocity calculations. The default value is 8.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/setVelocityIterations.html",
+        "snippet": "physics.setVelocityIterations( ${1:value} )"
+    },
+    {
+        "displayText": "physics.start( noSleep )",
+        "type": "function",
+        "description": "This function start the physics simulation and should be called before any other physics functions.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/start.html",
+        "snippet": "physics.start( ${1:noSleep} )"
+    },
+    {
+        "displayText": "physics.stop()",
+        "type": "function",
+        "description": "Stops the physics engine. This function will return false and display a warning message if the API cannot be processed.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/stop.html",
+        "snippet": "physics.stop()"
+    },
+    {
+        "displayText": "physics.toMKS( unitName, value )",
+        "type": "function",
+        "description": "Convenience function for converting from Corona units to MKS units.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/physics\/toMKS.html",
+        "snippet": "physics.toMKS( ${1:unitName}, ${2:value} )"
+    },
+    {
+        "displayText": "store.finishTransaction( transaction )",
+        "type": "function",
+        "description": "Notifies the Apple iTunes Store that a transaction is complete.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/store\/finishTransaction.html",
+        "snippet": "store.finishTransaction( ${1:transaction} )"
+    },
+    {
+        "displayText": "store.init( [storeName,] listener )",
+        "type": "function",
+        "description": "Activates in-app purchases (in-app billing as it is known on Android platforms). Allows you to receive callbacks with the listener function that you specify.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/store\/init.html",
+        "snippet": "store.init( ${1:[storeName,]} ${2:listener} )"
+    },
+    {
+        "displayText": "store.loadProducts( productIdentifiers, listener )",
+        "type": "function",
+        "description": "iOS and the Google Play Marketplace support loading of product information that you've entered into iTunes\u00a0Connect or the Google Play Developer Console. Corona provides the store.canLoadProducts property which will be true if the initialized store supports the loading of products. Following this check, the store.loadProducts() function will retrieve information about items available for sale. This includes the title, description, product identifier, type, and other details.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/store\/loadProducts.html",
+        "snippet": "store.loadProducts( ${1:productIdentifiers}, ${2:listener} )"
+    },
+    {
+        "displayText": "store.purchase( arrayOfProducts )",
+        "type": "function",
+        "description": "Initiates a purchase transaction on a provided list of products.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/store\/purchase.html",
+        "snippet": "store.purchase( ${1:arrayOfProducts} )"
+    },
+    {
+        "displayText": "store.restore()",
+        "type": "function",
+        "description": "Users who wipe the information on a device or buy a new device, may wish to restore previously purchased items without paying for them again. The store.restore() API initiates this process.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/store\/restore.html",
+        "snippet": "store.restore()"
+    },
+    {
+        "displayText": "string.byte( s [, i [, j]] )",
+        "type": "function",
+        "description": "Returns the internal numerical codes of the characters in a string.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/byte.html",
+        "snippet": "string.byte( ${1:s} ${2:[, i [, j]]} )"
+    },
+    {
+        "displayText": "s:byte( [, i [, j]] )",
+        "type": "function",
+        "description": "Returns the internal numerical codes of the characters in a string.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/byte.html",
+        "snippet": "s:byte( ${1:[, i [, j]]} )"
+    },
+    {
+        "displayText": "string.char( [arg1 [, ...] )",
+        "type": "function",
+        "description": "Returns a string in which each character has the internal numerical code equal to its corresponding argument.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/char.html",
+        "snippet": "string.char( ${1:[arg1 [, ...]} )"
+    },
+    {
+        "displayText": "string.find( s, pattern [, init [, plain]] )",
+        "type": "function",
+        "description": "Looks for the first match of a pattern in a string. If found, it returns the indices where the occurrence starts and ends; otherwise, returns nil.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/find.html",
+        "snippet": "string.find( ${1:s}, ${2:pattern} ${3:[, init [, plain]]} )"
+    },
+    {
+        "displayText": "string.format( formatstring [, ...] )",
+        "type": "function",
+        "description": "Returns a formatted string following the description given in its arguments.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/format.html",
+        "snippet": "string.format( ${1:formatstring} ${2:[, ...]} )"
+    },
+    {
+        "displayText": "formatstring:format( [...] )",
+        "type": "function",
+        "description": "Returns a formatted string following the description given in its arguments.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/format.html",
+        "snippet": "formatstring:format( ${1:[...]} )"
+    },
+    {
+        "displayText": "string.gmatch( s, pattern )",
+        "type": "function",
+        "description": "Returns a pattern-finding iterator. See Lua String Manipulation for more information.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/gmatch.html",
+        "snippet": "string.gmatch( ${1:s}, ${2:pattern} )"
+    },
+    {
+        "displayText": "s:gmatch( pattern )",
+        "type": "function",
+        "description": "Returns a pattern-finding iterator. See Lua String Manipulation for more information.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/gmatch.html",
+        "snippet": "s:gmatch( ${1:pattern} )"
+    },
+    {
+        "displayText": "string.gsub( s, pattern, repl [, n] )",
+        "type": "function",
+        "description": "Replace all occurrences of a pattern in a string.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/gsub.html",
+        "snippet": "string.gsub( ${1:s}, ${2:pattern}, ${3:repl} ${4:[, n]} )"
+    },
+    {
+        "displayText": "s:gsub( pattern, replace [,n] )",
+        "type": "function",
+        "description": "Replace all occurrences of a pattern in a string.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/gsub.html",
+        "snippet": "s:gsub( ${1:pattern}, ${2:replace} ${3:[,n]} )"
+    },
+    {
+        "displayText": "string.len( s )",
+        "type": "function",
+        "description": "Returns the length of a string (amount of characters).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/len.html",
+        "snippet": "string.len( ${1:s} )"
+    },
+    {
+        "displayText": "s:len()",
+        "type": "function",
+        "description": "Returns the length of a string (amount of characters).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/len.html",
+        "snippet": "s:len()"
+    },
+    {
+        "displayText": "string.lower( s )",
+        "type": "function",
+        "description": "Change uppercase characters in a string to lowercase.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/lower.html",
+        "snippet": "string.lower( ${1:s} )"
+    },
+    {
+        "displayText": "s:lower()",
+        "type": "function",
+        "description": "Change uppercase characters in a string to lowercase.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/lower.html",
+        "snippet": "s:lower()"
+    },
+    {
+        "displayText": "string.match( s, pattern [, init] ) ",
+        "type": "function",
+        "description": "Extract substrings by matching a pattern in a string. If a match is found, the captures from the pattern; otherwise it returns nil. If pattern specifies no captures, then the whole match is returned.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/match.html",
+        "snippet": "string.match( ${1:s}, ${2:pattern} ${3:[, init]} ) "
+    },
+    {
+        "displayText": "s:match( pattern [, init] )",
+        "type": "function",
+        "description": "Extract substrings by matching a pattern in a string. If a match is found, the captures from the pattern; otherwise it returns nil. If pattern specifies no captures, then the whole match is returned.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/match.html",
+        "snippet": "s:match( ${1:pattern} ${2:[, init]} )"
+    },
+    {
+        "displayText": "string.rep( s, n )",
+        "type": "function",
+        "description": "Replicates a string by returning a string that is the concatenation of n copies of a specified String.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/rep.html",
+        "snippet": "string.rep( ${1:s}, ${2:n} )"
+    },
+    {
+        "displayText": "s:rep( n )",
+        "type": "function",
+        "description": "Replicates a string by returning a string that is the concatenation of n copies of a specified String.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/rep.html",
+        "snippet": "s:rep( ${1:n} )"
+    },
+    {
+        "displayText": "string.reverse( s )",
+        "type": "function",
+        "description": "Reverses a string.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/reverse.html",
+        "snippet": "string.reverse( ${1:s} )"
+    },
+    {
+        "displayText": "s:reverse()",
+        "type": "function",
+        "description": "Reverses a string.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/reverse.html",
+        "snippet": "s:reverse()"
+    },
+    {
+        "displayText": "string.sub( s, i [, j] )",
+        "type": "function",
+        "description": "Returns a substring (a specified portion of an existing string).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/sub.html",
+        "snippet": "string.sub( ${1:s}, ${2:i} ${3:[, j]} )"
+    },
+    {
+        "displayText": "s:sub( i [,j] )",
+        "type": "function",
+        "description": "Returns a substring (a specified portion of an existing string).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/sub.html",
+        "snippet": "s:sub( ${1:i} ${2:[,j]} )"
+    },
+    {
+        "displayText": "string.upper( s )",
+        "type": "function",
+        "description": "Change lowercase characters in a string to uppercase. All other characters are left unchanged.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/upper.html",
+        "snippet": "string.upper( ${1:s} )"
+    },
+    {
+        "displayText": "s:upper()",
+        "type": "function",
+        "description": "Change lowercase characters in a string to uppercase. All other characters are left unchanged.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/string\/upper.html",
+        "snippet": "s:upper()"
+    },
+    {
+        "displayText": "system.activate( feature )",
+        "type": "function",
+        "description": "Activates a system level feature, such as \"multitouch\". Use system.deactivate() to disable a feature.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/activate.html",
+        "snippet": "system.activate( ${1:feature} )"
+    },
+    {
+        "displayText": "system.deactivate( feature )",
+        "type": "function",
+        "description": "Deactivates a system level feature, such as \"multitouch\".",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/deactivate.html",
+        "snippet": "system.deactivate( ${1:feature} )"
+    },
+    {
+        "displayText": "system.getIdleTimer()",
+        "type": "function",
+        "description": "Returns whether the application idle timer is enabled.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/getIdleTimer.html",
+        "snippet": "system.getIdleTimer()"
+    },
+    {
+        "displayText": "system.getInfo( property )",
+        "type": "function",
+        "description": "Returns information about the system on which the application is running.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/getInfo.html",
+        "snippet": "system.getInfo( ${1:property} )"
+    },
+    {
+        "displayText": "system.getInputDevices()",
+        "type": "function",
+        "description": "Returns an array of InputDevice devices that are currently connected to the system, such as a touchscreen, keyboard, mouse, joystick, etc. Alternatively returns an empty array if no input devices are found. Note that input devices which were once connected but were later disconnected will not be returned by this function.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/getInputDevices.html",
+        "snippet": "system.getInputDevices()"
+    },
+    {
+        "displayText": "system.getPreference( category, name )",
+        "type": "function",
+        "description": "Returns a preference value as a string.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/getPreference.html",
+        "snippet": "system.getPreference( ${1:category}, ${2:name} )"
+    },
+    {
+        "displayText": "system.getTimer()",
+        "type": "function",
+        "description": "Returns time in milliseconds since application launch.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/getTimer.html",
+        "snippet": "system.getTimer()"
+    },
+    {
+        "displayText": "system.hasEventSource( eventName )",
+        "type": "function",
+        "description": "Returns whether the system delivers events corresponding to eventName.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/hasEventSource.html",
+        "snippet": "system.hasEventSource( ${1:eventName} )"
+    },
+    {
+        "displayText": "system.openURL( url )",
+        "type": "function",
+        "description": "Open a web page in the browser, create an email, or dial a phone number.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/openURL.html",
+        "snippet": "system.openURL( ${1:url} )"
+    },
+    {
+        "displayText": "system.pathForFile( filename [, baseDirectory] )",
+        "type": "function",
+        "description": "Generates an absolute path using system-defined directories as the base. An additional optional parameter, baseDirectory, specifies which base directory is used to construct the full path, with its default value being system.ResourceDirectory.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/pathForFile.html",
+        "snippet": "system.pathForFile( ${1:filename} ${2:[, baseDirectory]} )"
+    },
+    {
+        "displayText": "system.setAccelerometerInterval( frequency )",
+        "type": "function",
+        "description": "Sets the frequency of accelerometer events. On the iPhone, the minimum frequency is 10 Hz and the maximum is 100 Hz. Accelerometer events are a significant drain on battery, so only increase the frequency when you need faster responses.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/setAccelerometerInterval.html",
+        "snippet": "system.setAccelerometerInterval( ${1:frequency} )"
+    },
+    {
+        "displayText": "system.setGyroscopeInterval( frequency )",
+        "type": "function",
+        "description": "Sets the frequency of gyroscope events in Hz. Gyroscope events are a significant drain on battery, so only increase the frequency when you need faster responses.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/setGyroscopeInterval.html",
+        "snippet": "system.setGyroscopeInterval( ${1:frequency} )"
+    },
+    {
+        "displayText": "system.setIdleTimer( enabled )",
+        "type": "function",
+        "description": "Controls whether the idle timer is enabled. If set to true, the timer will be active (default) or inactive if false. When active, the idle timer dims the screen and eventually puts the device to sleep when no user activity occurs (e.g. screen touches).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/setIdleTimer.html",
+        "snippet": "system.setIdleTimer( ${1:enabled} )"
+    },
+    {
+        "displayText": "system.setLocationAccuracy( distance )",
+        "type": "function",
+        "description": "Sets the desired accuracy of location (GPS) events to distance in meters. Note: the actual accuracy depends on the capabilities of the device and\/or platform. On the iPhone, accuracy is limited to discrete distances: < 10, 10, 100, 1000, and 3000 meters. Higher accuracy (smaller distances) requires more battery life, so use larger distance to preserve battery life.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/setLocationAccuracy.html",
+        "snippet": "system.setLocationAccuracy( ${1:distance} )"
+    },
+    {
+        "displayText": "system.setLocationThreshold( distance )",
+        "type": "function",
+        "description": "Sets how much distance in meters must be travelled until the next location (GPS) event is sent. Because location events involve hardware that can drain the battery, using larger threshold distances preserve battery life.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/setLocationThreshold.html",
+        "snippet": "system.setLocationThreshold( ${1:distance} )"
+    },
+    {
+        "displayText": "system.setTapDelay( delayTime )",
+        "type": "function",
+        "description": "The delay time between when a tap is detected and when the tap event is delivered. By default, this time is 0.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/setTapDelay.html",
+        "snippet": "system.setTapDelay( ${1:delayTime} )"
+    },
+    {
+        "displayText": "system.vibrate()",
+        "type": "function",
+        "description": "Vibrates the phone. On the Corona simulator this will sound a system beep (OS X only).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/vibrate.html",
+        "snippet": "system.vibrate()"
+    },
+    {
+        "displayText": "table.concat( t )",
+        "type": "function",
+        "description": "Concatenate the elements of a table together to form a string. Each element must be able to be coerced into a string. A separator can be specified which is placed between concatenated elements.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/concat.html",
+        "snippet": "table.concat( ${1:t} )"
+    },
+    {
+        "displayText": "table.concat( t, sep )",
+        "type": "function",
+        "description": "Concatenate the elements of a table together to form a string. Each element must be able to be coerced into a string. A separator can be specified which is placed between concatenated elements.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/concat.html",
+        "snippet": "table.concat( ${1:t}, ${2:sep} )"
+    },
+    {
+        "displayText": "table.concat( t, sep, i )",
+        "type": "function",
+        "description": "Concatenate the elements of a table together to form a string. Each element must be able to be coerced into a string. A separator can be specified which is placed between concatenated elements.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/concat.html",
+        "snippet": "table.concat( ${1:t}, ${2:sep}, ${3:i} )"
+    },
+    {
+        "displayText": "table.concat( t, sep, i, j )",
+        "type": "function",
+        "description": "Concatenate the elements of a table together to form a string. Each element must be able to be coerced into a string. A separator can be specified which is placed between concatenated elements.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/concat.html",
+        "snippet": "table.concat( ${1:t}, ${2:sep}, ${3:i}, ${4:j} )"
+    },
+    {
+        "displayText": "table.copy( t )",
+        "type": "function",
+        "description": "Returns a shallow copy of array, i.e. the portion of the array (table) with integer keys. A variable number of additional arrays can be passed in as optional arguments. If an array has a hole (a nil entry), copying in a given source array stops at the last consecutive item prior to the hole.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/copy.html",
+        "snippet": "table.copy( ${1:t} )"
+    },
+    {
+        "displayText": "table.copy( t, ... )",
+        "type": "function",
+        "description": "Returns a shallow copy of array, i.e. the portion of the array (table) with integer keys. A variable number of additional arrays can be passed in as optional arguments. If an array has a hole (a nil entry), copying in a given source array stops at the last consecutive item prior to the hole.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/copy.html",
+        "snippet": "table.copy( ${1:t}, ${2:...} )"
+    },
+    {
+        "displayText": "table.indexOf( t, element )",
+        "type": "function",
+        "description": "Returns the integer index of element in array t. Returns nil if not in array. The search goes through the length of the array as determined by #t, whose value is undefined if there are holes.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/indexOf.html",
+        "snippet": "table.indexOf( ${1:t}, ${2:element} )"
+    },
+    {
+        "displayText": "table.insert( t, value )",
+        "type": "function",
+        "description": "Insert a given value into a table. If a position is given insert the value before the element currently at that position.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/insert.html",
+        "snippet": "table.insert( ${1:t}, ${2:value} )"
+    },
+    {
+        "displayText": "table.insert( t, pos, value )",
+        "type": "function",
+        "description": "Insert a given value into a table. If a position is given insert the value before the element currently at that position.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/insert.html",
+        "snippet": "table.insert( ${1:t}, ${2:pos}, ${3:value} )"
+    },
+    {
+        "displayText": "table.maxn( t )",
+        "type": "function",
+        "description": "Returns the largest positive numerical index of the given table, or zero if the table has no positive numerical indices. To do its job, this function does a linear traversal of the whole table.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/maxn.html",
+        "snippet": "table.maxn( ${1:t} )"
+    },
+    {
+        "displayText": "table.remove( t )",
+        "type": "function",
+        "description": "Removes from table the element at position pos, shifting down other elements to close the space, if necessary. Returns the value of the removed element.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/remove.html",
+        "snippet": "table.remove( ${1:t} )"
+    },
+    {
+        "displayText": "table.remove( t, pos )",
+        "type": "function",
+        "description": "Removes from table the element at position pos, shifting down other elements to close the space, if necessary. Returns the value of the removed element.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/remove.html",
+        "snippet": "table.remove( ${1:t}, ${2:pos} )"
+    },
+    {
+        "displayText": "table.sort( t )",
+        "type": "function",
+        "description": "Sorts table elements in a given order, in-place, from table[1] to table[n], where n is the length of the table. It receives the table (array) to be sorted plus an optional compare function. This compare function receives two arguments and must return true if the first argument should come first in the sorted array. If compare is not given, then the standard Lua operator < is used instead.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/sort.html",
+        "snippet": "table.sort( ${1:t} )"
+    },
+    {
+        "displayText": "table.sort( t, compare )",
+        "type": "function",
+        "description": "Sorts table elements in a given order, in-place, from table[1] to table[n], where n is the length of the table. It receives the table (array) to be sorted plus an optional compare function. This compare function receives two arguments and must return true if the first argument should come first in the sorted array. If compare is not given, then the standard Lua operator < is used instead.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/table\/sort.html",
+        "snippet": "table.sort( ${1:t}, ${2:compare} )"
+    },
+    {
+        "displayText": "timer.cancel( timerID )",
+        "type": "function",
+        "description": "Cancels a timer operation initiated with timer.performWithDelay().",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/timer\/cancel.html",
+        "snippet": "timer.cancel( ${1:timerID} )"
+    },
+    {
+        "displayText": "timer.pause( timerId )",
+        "type": "function",
+        "description": "Pauses a timer started with timer.performWithDelay(). It returns a number that represents the amount of time remaining, in milliseconds.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/timer\/pause.html",
+        "snippet": "timer.pause( ${1:timerId} )"
+    },
+    {
+        "displayText": "timer.performWithDelay( delay, listener [, iterations] )",
+        "type": "function",
+        "description": "Call a specified function after a delay. This function returns an object that can be used with other timer functions. For example, the returned handle could be passed to timer.cancel() to cancel the invocation of the specified listener.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/timer\/performWithDelay.html",
+        "snippet": "timer.performWithDelay( ${1:delay}, ${2:listener} ${3:[, iterations]} )"
+    },
+    {
+        "displayText": "timer.resume( timerId )",
+        "type": "function",
+        "description": "Resumes a timer that was paused with timer.pause(). It returns a number that represents the amount of time remaining in the timer.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/timer\/resume.html",
+        "snippet": "timer.resume( ${1:timerId} )"
+    },
+    {
+        "displayText": "transition.cancel()",
+        "type": "function",
+        "description": "The transition.cancel() function will cancel one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/cancel.html",
+        "snippet": "transition.cancel()"
+    },
+    {
+        "displayText": "transition.cancel( transitionReference )",
+        "type": "function",
+        "description": "The transition.cancel() function will cancel one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/cancel.html",
+        "snippet": "transition.cancel( ${1:transitionReference} )"
+    },
+    {
+        "displayText": "transition.cancel( displayObject )",
+        "type": "function",
+        "description": "The transition.cancel() function will cancel one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/cancel.html",
+        "snippet": "transition.cancel( ${1:displayObject} )"
+    },
+    {
+        "displayText": "transition.cancel( tagName )",
+        "type": "function",
+        "description": "The transition.cancel() function will cancel one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/cancel.html",
+        "snippet": "transition.cancel( ${1:tagName} )"
+    },
+    {
+        "displayText": "transition.from( target, params )",
+        "type": "function",
+        "description": "Similar to transition.to() except that the starting property values are specified in the parameters table and the final values are the corresponding property values of the object prior to the call.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/from.html",
+        "snippet": "transition.from( ${1:target}, ${2:params} )"
+    },
+    {
+        "displayText": "transition.pause()",
+        "type": "function",
+        "description": "The transition.pause() function pauses one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/pause.html",
+        "snippet": "transition.pause()"
+    },
+    {
+        "displayText": "transition.pause( transitionReference )",
+        "type": "function",
+        "description": "The transition.pause() function pauses one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/pause.html",
+        "snippet": "transition.pause( ${1:transitionReference} )"
+    },
+    {
+        "displayText": "transition.pause( displayObject )",
+        "type": "function",
+        "description": "The transition.pause() function pauses one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/pause.html",
+        "snippet": "transition.pause( ${1:displayObject} )"
+    },
+    {
+        "displayText": "transition.pause( tagName )",
+        "type": "function",
+        "description": "The transition.pause() function pauses one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/pause.html",
+        "snippet": "transition.pause( ${1:tagName} )"
+    },
+    {
+        "displayText": "transition.resume()",
+        "type": "function",
+        "description": "The transition.resume() function resumes one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/resume.html",
+        "snippet": "transition.resume()"
+    },
+    {
+        "displayText": "transition.resume( transitionReference )",
+        "type": "function",
+        "description": "The transition.resume() function resumes one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/resume.html",
+        "snippet": "transition.resume( ${1:transitionReference} )"
+    },
+    {
+        "displayText": "transition.resume( displayObject )",
+        "type": "function",
+        "description": "The transition.resume() function resumes one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/resume.html",
+        "snippet": "transition.resume( ${1:displayObject} )"
+    },
+    {
+        "displayText": "transition.resume( tagName )",
+        "type": "function",
+        "description": "The transition.resume() function resumes one of the following, depending on the passed parameter:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/resume.html",
+        "snippet": "transition.resume( ${1:tagName} )"
+    },
+    {
+        "displayText": "transition.to( target, params )",
+        "type": "function",
+        "description": "Animates (transitions) a display object using an optional easing algorithm. Use this to move, rotate, fade, or scale an object over a specific period of time.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/transition\/to.html",
+        "snippet": "transition.to( ${1:target}, ${2:params} )"
+    },
+    {
+        "displayText": "widget.newButton( options )",
+        "type": "function",
+        "description": "Creates a Button object.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/newButton.html",
+        "snippet": "widget.newButton( ${1:options} )"
+    },
+    {
+        "displayText": "widget.newPickerWheel( options )",
+        "type": "function",
+        "description": "Creates a Picker Wheel object.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/newPickerWheel.html",
+        "snippet": "widget.newPickerWheel( ${1:options} )"
+    },
+    {
+        "displayText": "widget.newProgressView( options )",
+        "type": "function",
+        "description": "Creates a ProgressView object.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/newProgressView.html",
+        "snippet": "widget.newProgressView( ${1:options} )"
+    },
+    {
+        "displayText": "widget.newScrollView( options )",
+        "type": "function",
+        "description": "Creates a ScrollView object.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/newScrollView.html",
+        "snippet": "widget.newScrollView( ${1:options} )"
+    },
+    {
+        "displayText": "widget.newSegmentedControl( options )",
+        "type": "function",
+        "description": "Creates a Segmented Control object.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/newSegmentedControl.html",
+        "snippet": "widget.newSegmentedControl( ${1:options} )"
+    },
+    {
+        "displayText": "widget.newSlider( options )",
+        "type": "function",
+        "description": "Creates a Slider object.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/newSlider.html",
+        "snippet": "widget.newSlider( ${1:options} )"
+    },
+    {
+        "displayText": "widget.newSpinner( options )",
+        "type": "function",
+        "description": "Creates a Spinner object.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/newSpinner.html",
+        "snippet": "widget.newSpinner( ${1:options} )"
+    },
+    {
+        "displayText": "widget.newStepper( options )",
+        "type": "function",
+        "description": "Creates a Stepper object. The stepper consists of a minus and plus button which can be tapped or held down to decrement\/increment a value, for example, the music or sound volume setting in a game.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/newStepper.html",
+        "snippet": "widget.newStepper( ${1:options} )"
+    },
+    {
+        "displayText": "widget.newSwitch( options )",
+        "type": "function",
+        "description": "Creates a Switch object.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/newSwitch.html",
+        "snippet": "widget.newSwitch( ${1:options} )"
+    },
+    {
+        "displayText": "widget.newTabBar( options )",
+        "type": "function",
+        "description": "Creates a TabBar object.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/newTabBar.html",
+        "snippet": "widget.newTabBar( ${1:options} )"
+    },
+    {
+        "displayText": "widget.newTableView( options )",
+        "type": "function",
+        "description": "Creates a TableView object.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/newTableView.html",
+        "snippet": "widget.newTableView( ${1:options} )"
+    },
+    {
+        "displayText": "widget.setTheme( themeFile )",
+        "type": "function",
+        "description": "Use this function to set the overall theme of the widget library. This should be called immediately after you require() the widget library.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/widget\/setTheme.html",
+        "snippet": "widget.setTheme( ${1:themeFile} )"
+    },
+    {
+        "displayText": "EmitterObject:start()",
+        "type": "function",
+        "description": "Starts the emission of particles from an EmitterObject if the emitter is stopped, or resumes the emission of particles if the emitter is paused.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/EmitterObject\/start.html",
+        "snippet": "EmitterObject:start()"
+    },
+    {
+        "displayText": "EmitterObject:stop()",
+        "type": "function",
+        "description": "Stops the emission of particles from an EmitterObject. This function allows the currently active particles to finish their cycle naturally.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/EmitterObject\/stop.html",
+        "snippet": "EmitterObject:stop()"
+    },
+    {
+        "displayText": "EmitterObject:pause()",
+        "type": "function",
+        "description": "Pauses (freezes) the EmitterObject. No particles will be added, removed, or animated while an emitter is paused.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/EmitterObject\/pause.html",
+        "snippet": "EmitterObject:pause()"
+    },
+    {
+        "displayText": "Runtime:hasEventSource( eventSourceName )",
+        "type": "function",
+        "description": "Determines if the device is capable of providing events for a given event source such as an \"accelerometer\" or \"gyroscope\". You should call this function before calling the Runtime:addEventListener() function.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/Runtime\/hasEventSource.html",
+        "snippet": "Runtime:hasEventSource( ${1:eventSourceName} )"
+    },
+    {
+        "displayText": "Runtime:hideErrorAlerts()",
+        "type": "function",
+        "description": "Disables the runtime error alert that appears if the application hits an error condition. This is shorthand for defining your own unhandledError listener and returning true.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/Runtime\/hideErrorAlerts.html",
+        "snippet": "Runtime:hideErrorAlerts()"
+    },
+    {
+        "displayText": "audio.freeChannels",
+        "type": "property",
+        "description": "This property is equal to the number of channels that are currently available for playback (channels not playing or paused).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/freeChannels.html",
+        "snippet": "audio.freeChannels"
+    },
+    {
+        "displayText": "audio.totalChannels",
+        "type": "property",
+        "description": "Returns the total number of channels. This value is currently 32, but the limit may change in the future.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/totalChannels.html",
+        "snippet": "audio.totalChannels"
+    },
+    {
+        "displayText": "audio.unreservedFreeChannels",
+        "type": "property",
+        "description": "Returns the number of channels that are currently available for playback (channels not playing or paused), excluding the channels which have been reserved.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/unreservedFreeChannels.html",
+        "snippet": "audio.unreservedFreeChannels"
+    },
+    {
+        "displayText": "audio.unreservedUsedChannels",
+        "type": "property",
+        "description": "Returns the number of channels that are currently in use (playing or paused), excluding the channels which have been reserved.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/unreservedUsedChannels.html",
+        "snippet": "audio.unreservedUsedChannels"
+    },
+    {
+        "displayText": "audio.usedChannels",
+        "type": "property",
+        "description": "Returns the number of channels that are currently in use (playing or paused).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/audio\/usedChannels.html",
+        "snippet": "audio.usedChannels"
+    },
+    {
+        "displayText": "composer.isDebug",
+        "type": "property",
+        "description": "Toggles \"Composer Debug Mode\" which, if set to true, prints useful debugging information to the Corona Simulator Console in certain situations. This should be set to false (default) before building the project for deployment.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/isDebug.html",
+        "snippet": "composer.isDebug"
+    },
+    {
+        "displayText": "composer.recycleOnLowMemory",
+        "type": "property",
+        "description": "If the OS issues a low memory warning, Composer will automatically recycle the scene used least recently (that scene's self.view will be removed). If you prefer to disable auto-recycling functionality, set this property to false. Default is true.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/recycleOnLowMemory.html",
+        "snippet": "composer.recycleOnLowMemory"
+    },
+    {
+        "displayText": "composer.recycleOnSceneChange",
+        "type": "property",
+        "description": "By default, when changing scenes, Composer keeps the current scene's view (self.view) in memory, which can improve performance if you access the same scenes frequently. If you set composer.recycleOnSceneChange to true, the scene's self.view display group will be removed, but its scene object will remain in memory. The default value is false.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/recycleOnSceneChange.html",
+        "snippet": "composer.recycleOnSceneChange"
+    },
+    {
+        "displayText": "composer.stage",
+        "type": "property",
+        "description": "Returns a reference to the top-level Composer display group which all scene views are inserted into. This can be considered as the \"Composer\u00a0scene\u00a0layer\" and it's useful if you need to place display objects above or below all Composer scenes, even during transition effects. For example:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/composer\/stage.html",
+        "snippet": "composer.stage"
+    },
+    {
+        "displayText": "store.availableStores",
+        "type": "property",
+        "description": "Array of store names for which Corona supports in-app purchases on the current device. This can also be used in conjunction with native.showPopup( \"appStore\" ) (reference).",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/store\/availableStores.html",
+        "snippet": "store.availableStores"
+    },
+    {
+        "displayText": "store.canLoadProducts",
+        "type": "property",
+        "description": "This property will be true if the initialized store supports the loading of products. Following this check, the store.loadProducts() function will retrieve information about items available for sale. This includes the title, description, product identifier, type, and other details.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/store\/canLoadProducts.html",
+        "snippet": "store.canLoadProducts"
+    },
+    {
+        "displayText": "store.canMakePurchases",
+        "type": "property",
+        "description": "This property is true if purchases are allowed, false otherwise.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/store\/canMakePurchases.html",
+        "snippet": "store.canMakePurchases"
+    },
+    {
+        "displayText": "store.isActive",
+        "type": "property",
+        "description": "To confirm that a store is properly initialized after calling store.init(), check the store.isActive() property. This will be true if the store has successfully initialized. Currently, it will be false on a Corona app built for Amazon or Nook.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/store\/isActive.html",
+        "snippet": "store.isActive"
+    },
+    {
+        "displayText": "store.target",
+        "type": "property",
+        "description": "Indicates the store that the app was built for. It will yield one of the following strings:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/store\/target.html",
+        "snippet": "store.target"
+    },
+    {
+        "displayText": "system.orientation",
+        "type": "property",
+        "description": "String value identifying the orientation of the device:",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/library\/system\/orientation.html",
+        "snippet": "system.orientation"
+    },
+    {
+        "displayText": "snapshot.canvas",
+        "type": "property",
+        "description": "This group is a special offscreen group that enables you to draw on the snapshot's texture without redrawing the objects in snapshot.group.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/SnapshotObject\/canvas.html",
+        "snippet": "snapshot.canvas"
+    },
+    {
+        "displayText": "snapshot.canvasMode",
+        "type": "property",
+        "description": "The canvas mode controls what happens to the children of the snapshot's canvas.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/SnapshotObject\/canvasMode.html",
+        "snippet": "snapshot.canvasMode"
+    },
+    {
+        "displayText": "snapshot.clearColor",
+        "type": "property",
+        "description": "The clear color controls how the snapshot's texture is cleared when the snapshot is invalidated.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/SnapshotObject\/clearColor.html",
+        "snippet": "snapshot.clearColor"
+    },
+    {
+        "displayText": "snapshot.group",
+        "type": "property",
+        "description": "This group is a special offscreen group that determines what is rendered in the snapshot.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/SnapshotObject\/group.html",
+        "snippet": "snapshot.group"
+    },
+    {
+        "displayText": "snapshot.textureFilter",
+        "type": "property",
+        "description": "This controls the texture filter mode for the snapshot. See the Texture\u00a0Keys section of display.setDefault() for valid filter values.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/SnapshotObject\/textureFilter.html",
+        "snippet": "snapshot.textureFilter"
+    },
+    {
+        "displayText": "snapshot.textureWrapX",
+        "type": "property",
+        "description": "This controls the texture wrap in the x direction for the snapshot. See the Texture\u00a0Keys section of display.setDefault() for valid wrap values.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/SnapshotObject\/textureWrapX.html",
+        "snippet": "snapshot.textureWrapX"
+    },
+    {
+        "displayText": "snapshot.textureWrapY",
+        "type": "property",
+        "description": "This controls the texture wrap in the y direction for the snapshot. See the Texture\u00a0Keys section of display.setDefault() for valid wrap values.",
+        "descriptionMoreUrl": "http:\/\/docs.local.coronalabs.com\/api\/type\/SnapshotObject\/textureWrapY.html",
+        "snippet": "snapshot.textureWrapY"
+    }
+]
