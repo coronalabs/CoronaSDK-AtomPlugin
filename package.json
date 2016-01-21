@@ -1,14 +1,14 @@
 {
   "name": "autocomplete-corona",
   "main": "./lib/main",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "Corona SDK autocomplete package",
   "keywords": [
     "lua",
     "corona",
     "autocomplete"
   ],
-  "repository": "https://github.com/coronalabs/atom-autocomplete-corona",
+  "repository": "https://github.com/coronalabs/CoronaSDK-AtomPlugin",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
@@ -20,5 +20,8 @@
       }
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "atom-package-deps": "^3.0.0"
+  },
+  "package-deps": ["language-lua"]
 }
