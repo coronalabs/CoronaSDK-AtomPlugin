@@ -1,7 +1,7 @@
 {
   "name": "autocomplete-corona",
   "main": "./lib/main",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Corona SDK autocomplete package",
   "keywords": [
     "lua",
@@ -23,5 +23,7 @@
   "dependencies": {
     "atom-package-deps": "^3.0.0"
   },
-  "package-deps": ["language-lua"]
+  "package-deps": [
+    "language-lua"
+  ]
 }
