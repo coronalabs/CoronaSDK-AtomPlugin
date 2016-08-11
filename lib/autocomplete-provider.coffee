@@ -8,7 +8,7 @@ module.exports =
     inclusionPriority: 1
     excludeLowerPriority: false
     filterSuggestions: false
-    
+
     getSuggestions: ( { editor, prefix, bufferPosition } ) ->
         prefix = @getPrefix(editor, bufferPosition)
 
@@ -21,13 +21,13 @@ module.exports =
         suggestions = []
         for item in completions
             if @compareStrings( item.displayText, prefix )
-                suggestions.push( @buildSuggestion( item ) )
+                suggestions.push( @buildSuggestion( item , prefix.indexOf('.')) )
         suggestions
 
-    buildSuggestion: ( item ) ->
+    buildSuggestion: ( item, hasDot ) ->
         suggestion =
             displayText: item.displayText
-            snippet: item.snippet
+            snippet: if hasDot is -1 then item.snippet else item.snippet.substring(item.snippet.indexOf('.') + 1)
             type: item.type
             description: item.description
             descriptionMoreURL: item.descriptionMoreUrl
