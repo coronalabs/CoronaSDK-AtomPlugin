@@ -27,8 +27,11 @@ module.exports =
     buildSuggestion: ( item, hasDot ) ->
         includeArguments = atom.config.get('autocomplete-corona.includeArguments')
         snippet = if hasDot is -1 then item.snippet else item.snippet.substring(item.snippet.indexOf('.') + 1)
+
         if !includeArguments
-            snippet = snippet.substring(0, snippet.indexOf('(')) + '( ${1} )'
+          if snippet.indexOf('()') == -1
+            if snippet.indexOf('(') != -1
+              snippet = snippet.substring(0, snippet.indexOf('(')) + '(${1})'
 
         suggestion =
             displayText: item.displayText
