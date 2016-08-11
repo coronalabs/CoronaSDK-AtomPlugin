@@ -6,7 +6,6 @@ module.exports =
         packageDeps.install()
         .then ->
           provider.loadCompletions()
-          console.log('here')
 
      getAutocompleteProvider: ->
         provider

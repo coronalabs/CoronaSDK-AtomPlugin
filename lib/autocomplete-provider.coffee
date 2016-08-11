@@ -7,8 +7,8 @@ module.exports =
 
     inclusionPriority: 1
     excludeLowerPriority: false
-    filterSuggestions: true
-
+    filterSuggestions: false
+    
     getSuggestions: ( { editor, prefix, bufferPosition } ) ->
         prefix = @getPrefix(editor, bufferPosition)
 
@@ -39,7 +39,8 @@ module.exports =
             return
 
     compareStrings: ( a, b ) ->
-        a[0].toLowerCase() is b[0].toLowerCase()
+        maxLength = if a.length < b.length then a.length else b.length
+        a.substring(0, maxLength) is b.substring(0, maxLength)
 
     getPrefix: (editor, bufferPosition) ->
       regex = /[a-zA-Z0-9_\.]*$/
