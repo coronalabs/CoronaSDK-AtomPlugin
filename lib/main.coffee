@@ -7,7 +7,7 @@ module.exports =
         type: 'boolean'
         default: true
     activate: ->
-        packageDeps.install()
+        packageDeps.install('language-lua')
         .then ->
           provider.loadCompletions()
 
