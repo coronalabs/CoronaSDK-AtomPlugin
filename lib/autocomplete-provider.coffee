@@ -19,9 +19,10 @@ module.exports =
 
     findSuggestions: ( completions, prefix ) ->
         suggestions = []
-        for item in completions
-            if @compareStrings( item.displayText, prefix )
-                suggestions.push( @buildSuggestion( item , prefix.indexOf('.')) )
+        if completions?
+            for item in completions
+                if item? && prefix? && item.displayText? && @compareStrings( item.displayText, prefix )
+                    suggestions.push( @buildSuggestion( item , prefix.indexOf('.')) )
         suggestions
 
     buildSuggestion: ( item, hasDot ) ->
@@ -41,9 +42,11 @@ module.exports =
             descriptionMoreURL: item.descriptionMoreUrl
 
     loadCompletions: ->
-        @completions = {}
         fs.readFile path.resolve( __dirname, '..', './data/corona-data.json' ), ( error, data ) =>
             @completions = JSON.parse( data ) unless error?
+            unless @completions?
+                    atom.notifications.addError('Corona Autocomplete data is corrupt. Please, reinstall the plugin.')
+                    @completions = []
             return
 
     compareStrings: ( a, b ) ->
