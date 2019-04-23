@@ -1,7 +1,7 @@
 {
   "name": "autocomplete-corona",
   "main": "./lib/main",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Corona SDK autocomplete package",
   "keywords": [
     "lua",
