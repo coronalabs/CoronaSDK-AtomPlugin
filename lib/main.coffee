@@ -7,7 +7,7 @@ module.exports =
         type: 'boolean'
         default: true
     activate: ->
-        packageDeps.install('language-lua')
+        packageDeps.install('autocomplete-corona')
         .then ->
           provider.loadCompletions()
 
